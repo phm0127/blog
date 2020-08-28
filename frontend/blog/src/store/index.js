@@ -11,10 +11,32 @@ export default new Vuex.Store({
         createPersistedState()
     ],
     state:{
-        address: 'localhost',
+        backaddr: 'localhost:8080',
+        frontaddr : 'localhost',
         page:'/',
         pageIndex:1,
+        token:'',
+        //authToken: VueCookies.get('auth-token'),
+        user:{
+            email:'',
+            name:'',
+            nickname:'',
+            access_token:'',
+        },
+
+        
+        
     },
+    getters: {
+        isLoggedIn: state => !!state.authToken,
+      },
+    mutations:{
+        SET_TOKEN(state, token) {
+            state.authToken = token
+            //VueCookies.set('auth-token', token)
+        },
+    },
+    
     
 
 })

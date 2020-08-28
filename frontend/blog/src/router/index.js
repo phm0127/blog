@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Main from '../views/Main.vue'
+import Agreement from '../views/Agreement.vue'
 import Intro from '../views/Home.vue'
-import Navbar from '../components/Nav.vue'
+import Portfolio from '../views/Portfolio.vue'
 import NotFoundPage from '../views/NotFoundPage.vue'
+import Error from '../views/Error.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -13,14 +15,24 @@ const routes = [
         component : Main
     },
     {
+        path: '/agreement',
+        name : "Agreement",
+        component : Agreement
+    },
+    {
         path: '/1000min',
         name : "Intro",
         component : Intro
     },
     {
-        path: '/nav',
-        name : "Navbar",
-        component : Navbar
+        path: '/portfolio',
+        name : "Portfolio",
+        component : Portfolio
+    },
+    {
+        path: '/error',
+        name : "Error",
+        component : Error
     },
     {
         path: '*',

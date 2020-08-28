@@ -1,20 +1,32 @@
 <template>
-  <ul class="nav" style="position:fixed; z-index:1; margin : 0 auto; left:0; right:0;">
-    <li><a v-on:click="movepage('Main',1)" class="slid">Alpha</a></li>
-    <li><a v-on:click="movepage('Intro',2)">Beta</a></li>
-    <li><a href="#/3">Gamma</a></li>
-    <li><a href="#/4">Delta</a></li>
-    <li><a href="#/5">Epsilon</a></li>
-    <li class="slide1"></li>
-    <li class="slide2"></li>
-</ul>
+    <div style="z-index:2; margin : 0 auto;">
+    <ul class="nav" style="position:fixed; z-index:2; margin : 0 auto; left:0; right:0;">
+        <li><a v-on:click="movepage('Main',1)" class="slid">Alpha</a></li>
+        <li><a v-on:click="movepage('Intro',2)">Beta</a></li>
+        <li><a v-on:click="movepage('Portfolio',3)">Gamma</a></li>
+        <li><a href="#/4">Delta</a></li>
+        <li><a href="#/5">Epsilon</a></li>
+        <li class="slide1"></li>
+        <li class="slide2"></li>
+    </ul>
+        
+        
+    
+   
+    
+    
+    </div>
 </template>
 
 <script>
 import $ from 'jquery'
+
+
+
 export default {
    
      name : 'Nav',
+     
     mounted : function(){
     if(localStorage.getItem('pageIndex')==null){
       localStorage.setItem("pageIndex",1)
@@ -56,7 +68,8 @@ $(".nav .slide1").css({ left: +current.left, width: currentWidth });
           this.$store.state.pageIndex=index
           localStorage.setItem("pageIndex",index)
           this.$router.push({name: page}).catch(()=>{})
-       }
+       },
+      
      }
       
 }

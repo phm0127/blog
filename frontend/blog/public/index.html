@@ -6,7 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-  
+  <link
+    rel="stylesheet"
+    href="https://uicdn.toast.com/tui-color-picker/latest/tui-color-picker.min.css"
+  />
   <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 
@@ -16,6 +19,11 @@
     <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
       Please enable it to continue.</strong>
   </noscript>
+  
+  <!-- Editor -->
+  <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+  <!-- Editor's Plugin -->
+  <script src="https://uicdn.toast.com/editor-plugin-color-syntax/latest/toastui-editor-plugin-color-syntax.min.js"></script>
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
   <div id="app">
   </div>

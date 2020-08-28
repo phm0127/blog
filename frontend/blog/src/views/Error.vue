@@ -28,8 +28,8 @@
   <!-- Content -->
   <div class="error__content">
     <div class="error__message message">
-      <h1 class="message__title">Page Not Found</h1>
-      <p class="message__text">We're sorry, the page you were looking for isn't found here. The link you followed may either be broken or no longer exists. Please try again, or take a look at our.</p>
+      <h1 class="message__title">Error</h1>
+      <p class="message__text">{{ $route.query.msg }}</p>
     </div>
     <div class="error__nav e-nav">
       <a href="/" target="_blanck" class="e-nav__link"></a>
@@ -44,10 +44,11 @@
 
 <script>
 export default {
-  mounted() {
+    name: 'Error',
+    mounted() {
       this.$store.state.pageIndex=1
       localStorage.setItem("pageIndex",1)
-  }
+    },
 }
 </script>
 
@@ -536,7 +537,7 @@ button {
   }
 }
 @media (max-width: 750px) {
-  body, html, {
+  body, html {
     max-height: 100vh;
   }
    .error__content {

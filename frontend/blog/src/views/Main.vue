@@ -26,6 +26,7 @@
 
 <script>
 import MainLogo from '../components/Main/MainLogo.vue'
+// import axios from 'axios'
 //import '@/assets/css/fontawesome.css'
 
 export default {
@@ -35,11 +36,16 @@ export default {
         MainLogo,
         
     },
+    
     date() {
         return {
-          
+           token:'',
             
         }
+    },
+    created() {
+        
+        
     }
 }
 </script>
