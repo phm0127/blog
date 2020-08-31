@@ -3,10 +3,10 @@
 <v-top-naviation>
   <navbar/>
   <div style='float:right; z-index:3; width: 150px; margin-top:10px;'>
-        <div style="position:fixed; z-index:3; padding: 10px 20px;" v-if=!isLogin><a v-on:click="modal_rendar()" style="padding: 0.6em 2em;
+        <div style="position:fixed; z-index:3; padding: 10px 20px;" v-if=!this.$store.state.isLogin><a v-on:click="modal_rendar()" style="padding: 0.6em 2em;
         font-size: 20px; color:white;" >Login</a></div>
         
-        <div style="position:fixed; z-index:3; padding: 10px 20px;"  v-if=isLogin>
+        <div style="position:fixed; z-index:3; padding: 10px 20px;"  v-if=this.$store.state.isLogin>
           <a v-on:click="logout()" style="padding: 0.6em 2em; font-size: 20px; color:white;">Logout</a>
         </div>
     </div>
@@ -24,7 +24,6 @@
 </template>
 
 <script>
-
 import Navbar from '@/components/Nav.vue'
 import LoginModal from '@/components/LoginModal.vue'
 export default {
@@ -38,16 +37,18 @@ export default {
   },
   components:{
     Navbar,
-
+  },
+  computed:{
+    
   },
   mounted(){
     
     if(sessionStorage.getItem("name")!=null){
       this.name=sessionStorage.getItem("name")
       console.log(this.name)
-      this.isLogin=true;
+      this.$store.state.isLogin=true;
     }else{
-      this.isLogin=false;
+      this.$store.state.isLogin=false;
     }
   },
   methods:{
@@ -66,7 +67,8 @@ export default {
       sessionStorage.removeItem("name")
       sessionStorage.removeItem("nickname")
       sessionStorage.removeItem("role")
-      
+      this.$store.state.isLogin=false;
+      this.$router.push('/')
     }
   }
   
@@ -83,6 +85,5 @@ import '@/assets/css/Main.css'
   text-align: center;
   color: #2c3e50;
   
-
 }
 </style>

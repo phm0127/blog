@@ -35,6 +35,7 @@ export default {
         sessionStorage.setItem("role",response.data.object.role)
         console.log(response.data.object)
         localStorage.setItem("pageIndex",1)
+        this.$store.state.isLogin=true;
         this.$router.push('/')
 
       }).catch(()=>{

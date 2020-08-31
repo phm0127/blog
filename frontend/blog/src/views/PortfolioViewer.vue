@@ -1,9 +1,19 @@
 <template>
 <div>
     <sidebar-menu :menu="menu" @item-click="onItemClick" :relative="true" style="float:left; height:100vh; z-index:1;"   />
-    <board-list v-if="!isWrite" :type="0" :subCategoryID="subCategoryID" />
-    <write-form v-if="isWrite" style="text-align:left;"/>
+    <div style="padding-left: 400px;" v-if="!isWrite">
+    <h1 style="padding-top : 20px;">{{ title }}</h1>
+    <viewer 
+    v-if="viewerText != null"
+    :initialValue="viewerText"
+    height="91vh"
+    initialEditType="markdown"
+    previewStyle="vertical"
+    style="text-align:left;"
+    />
     
+    </div>
+    <edit-form v-if="isWrite" style="text-align:left;" :subCategoryID="subCategoryID" :boardID="boardID" :title="title" :viewerText="viewerText" />
     <v-speed-dial
         v-model="fab"
         absolute
@@ -59,22 +69,45 @@
 
 <script>
 import axios from 'axios'
-import WriteForm from '../components/Board/WriteForm.vue'
-import BoardList from '../components/Board/BoardList.vue'
 import CategoryModal from '@/components/Board/CategoryModal.vue'
 import { SidebarMenu } from 'vue-sidebar-menu'
+import '@toast-ui/editor/dist/toastui-editor-viewer.css';
+import { Viewer } from '@toast-ui/vue-editor';
+import EditForm from '../components/Board/EditForm.vue'
+
 export default {
 name:'Portfolio',
     components : {
         SidebarMenu,
-        WriteForm,
-        BoardList,
+        Viewer,
+        EditForm
+    },
+    props: {
+        boardID: {
+            type: Number,
+            required: true
+        }
     },
     mounted() {
         if(sessionStorage.getItem('role')!=null){
             this.role=sessionStorage.getItem('role')
         }
 
+        axios.get('http://localhost:8080/board/board',{
+            params:{
+                boardID:Number(this.boardID)
+            }
+        })
+        .then(res=>{
+            this.viewerText=res.data.object.content
+            this.title=res.data.object.title
+            this.subCategoryID=Number(res.data.data)
+            console.log(res.data.object.content)
+            
+        })
+        
+
+        
         axios.get('http://localhost:8080/board/maincategory',{
             params:{
                 key:0
@@ -84,7 +117,7 @@ name:'Portfolio',
             let maincategoryArr = res.data.object;
             for(let i=0; i<maincategoryArr.length;i++){
                 let tempChild=[]
-                console.log(maincategoryArr[i].subcategories)
+                
                 for(let j=0;j<maincategoryArr[i].subcategories.length;j++){
                     
                     tempChild.push({
@@ -101,17 +134,26 @@ name:'Portfolio',
             } 
             
         })
-        .error(res=>{
-            console.log(res)
-        })
+       
+
+
+        
+        
+        
+        
+    },
+    created(){
+        
+        
     },
     data() {
             return {
                 role :'guest',
-                isWrite: false,
                 subCategoryID:0,
-                pageIndex:0,
                 fab: false,
+                title : '',
+                viewerText:null,
+                isWrite:false,
                 menu: [
                     {
                         header: true,

@@ -4,6 +4,7 @@ import Main from '../views/Main.vue'
 import Agreement from '../views/Agreement.vue'
 import Intro from '../views/Home.vue'
 import Portfolio from '../views/Portfolio.vue'
+import PortfolioViewer from '../views/PortfolioViewer.vue'
 import NotFoundPage from '../views/NotFoundPage.vue'
 import Error from '../views/Error.vue'
 Vue.use(VueRouter)
@@ -24,10 +25,17 @@ const routes = [
         name : "Intro",
         component : Intro
     },
+    
     {
         path: '/portfolio',
         name : "Portfolio",
         component : Portfolio
+    },
+    {
+        path: '/portfolio/:boardID',
+        name : "Portfolioviewer",
+        props: true,
+        component : PortfolioViewer
     },
     {
         path: '/error',

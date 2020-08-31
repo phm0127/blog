@@ -24,9 +24,9 @@
   </div>
 </div>
 <!-- END Lamp -->
-<section class="error">
+<section class="errors" >
   <!-- Content -->
-  <div class="error__content">
+  <div class="error__content" > 
     <div class="error__message message">
       <h1 class="message__title">Page Not Found</h1>
       <p class="message__text">We're sorry, the page you were looking for isn't found here. The link you followed may either be broken or no longer exists. Please try again, or take a look at our.</p>
@@ -215,7 +215,7 @@ button {
 			/* 2. CONTENT */
 /***********************************/
 /* 2.1. Section error */
-.error {
+.errors {
   min-height: 100vh;
   position: relative;
   padding: 240px 0;
@@ -485,7 +485,7 @@ button {
 /***********************************
 			/* 3. RESPONSIVE */
 /***********************************/
-.error {
+.errors {
   overflow: hidden;
   max-height: 100vh;
 }
@@ -545,7 +545,7 @@ button {
     transform: none;
     padding-top: 300px;
   }
-  .error {
+  .errors {
     padding-top: 0;
     padding-bottom: 100px;
     height: 100vh;

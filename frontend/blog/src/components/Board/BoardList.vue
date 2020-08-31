@@ -26,9 +26,9 @@ export default {
                 pageIndex:this.pageIndex
             }
             })
-            .then(response => {
-                
-               console.log(response)
+            .then(res => {
+               
+               console.log(res.data.object)
             
             })
             .catch(err=>{

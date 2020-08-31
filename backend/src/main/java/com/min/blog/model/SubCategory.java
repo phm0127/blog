@@ -47,4 +47,10 @@ public class SubCategory {
         board.setSubCategory(this);
     }
 
+    public Board removeBoard(Board board){
+        boardsInternal().remove(board);
+        board.setSubCategory(null);
+        return board;
+    }
+
 }

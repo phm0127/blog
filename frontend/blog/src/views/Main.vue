@@ -2,7 +2,7 @@
     <div>
 
   <main-logo style="display : flex; margin : 0 auto; left:0; right:0; "/>
-  <p style="text-align : center; font-size:8rem;"><span style="font-size:9rem; font-weight:bold;">1000min</span>'s <span style="color:#00bb00;">Dev</span>LOG</p>
+  <p style="text-align : center; font-size:8rem; font-weight:bold;"><span style="font-size:9rem; font-weight:bold; ">1000min</span>'s <span style="color:#00bb00; font-weight:bold;">Dev</span>LOG</p>
   <div style="width:100%; text-align:center;">
       <p style="font-size:3rem;" >contact me by</p>
   <div style="display: inline-block;">

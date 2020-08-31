@@ -2,6 +2,8 @@ package com.min.blog.controller;
 
 
 import com.min.blog.dto.BoardListDTO;
+import com.min.blog.dto.EditBoard;
+import com.min.blog.dto.FullCategory;
 import com.min.blog.dto.WriteBoard;
 import com.min.blog.model.*;
 import com.min.blog.repository.BoardRepository;
@@ -34,14 +36,8 @@ public class BoardController {
 
 
     @GetMapping("/maincategory")
-    public Object getCategory(@RequestBody Map map){
+    public Object getCategory(@RequestParam int key){
         BasicResponse response = new BasicResponse();
-        if(!map.containsKey("type")){
-            response.status=false;
-            response.data="카테고리 타입 없음";
-            return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
-        }
-        int key = (Integer)map.get("type");
         BoardType type = BoardType.BLOG;
         if(key==0){
             type=BoardType.PORTFOLIO;
@@ -49,6 +45,32 @@ public class BoardController {
 
         response.status=true;
         response.object= mainCategoryRepository.findAllByType(type).stream().sorted(Comparator.comparingInt(MainCategory::getSequenceNo)).collect(Collectors.toList());
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/onemaincategory")
+    public Object getoneCategory(@RequestParam int subCategoryID){
+        BasicResponse response = new BasicResponse();
+        long id = subCategoryID;
+        Optional<SubCategory> subCategory = subCategoryRepository.findById(id);
+        if(!subCategory.isPresent()){
+            response.status=false;
+            response.data="서브카테고리 없음";
+            return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
+        }
+        Optional<MainCategory> mainCategory = mainCategoryRepository.findBySubcategories(subCategory.get());
+        if(!mainCategory.isPresent()){
+            response.status=false;
+            response.data="메인카테고리 없음";
+            return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
+        }
+        FullCategory fullCategory = new FullCategory();
+        fullCategory.setMainCategory(mainCategory.get());
+        fullCategory.setSubCategory(subCategory.get());
+        response.status=true;
+        response.object= fullCategory;
+
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
@@ -74,9 +96,8 @@ public class BoardController {
     }
 
     @GetMapping("/subcategory")
-    public Object getSubCategory(@RequestBody Map map){
+    public Object getSubCategory(@RequestParam Long mainCategoryID){
         BasicResponse response = new BasicResponse();
-        long mainCategoryID=(Long) map.get("mainCategoryID");
         Optional<MainCategory> mainCategory = mainCategoryRepository.findById(mainCategoryID);
         if(!mainCategory.isPresent()){
             response.status=false;
@@ -90,11 +111,12 @@ public class BoardController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PutMapping("/subcategory")
+    @PostMapping("/subcategory")
     public Object addSubCategory(@RequestBody Map map){
         BasicResponse response = new BasicResponse();
         String name = (String)map.get("name");
-        long mainCategoryID=(Long) map.get("mainCategoryID");
+        int intid = (int)map.get("mainCategoryID");
+        long mainCategoryID=intid;
         int order = (Integer)map.get("order");
         Optional<MainCategory> mainCategory = mainCategoryRepository.findById(mainCategoryID);
         if(!mainCategory.isPresent()){
@@ -160,16 +182,20 @@ public class BoardController {
     }
 
     @GetMapping("/board")
-    public Object getBoard(@RequestBody Map map){
+    public Object getBoard(@RequestParam int boardID){
         BasicResponse response = new BasicResponse();
-        long id=(Long) map.get("id");
+        System.out.println(boardID);
+        long id=boardID;
         Optional<Board> board = boardRepository.findById(id);
+
         if(!board.isPresent()){
             response.status=false;
             response.data="게시글 정보 없음";
             return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
         }
+
         response.status=true;
+        response.data=""+board.get().getSubCategory().getId();
         response.object=board.get();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
@@ -195,7 +221,41 @@ public class BoardController {
         subCategory.get().addBoard(board);
         boardRepository.save(board);
         subCategoryRepository.save(subCategory.get());
+
         response.status=true;
+        response.object=board;
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @PostMapping("/editboard")
+    public Object editBoard(@RequestBody EditBoard editBoard){
+        BasicResponse response = new BasicResponse();
+        System.out.println(editBoard.getBoardID());
+        Optional<Board> board = boardRepository.findById(editBoard.getBoardID());
+        if(!board.isPresent()){
+            response.status=false;
+            response.data="보드 정보 없음";
+            return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
+        }
+
+        Optional<SubCategory> subCategory = subCategoryRepository.findById(editBoard.getSubCategoryID());
+        if(!subCategory.isPresent()){
+            response.status=false;
+            System.out.println("서브 카테고리 정보 없음");
+            return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
+        }
+        board.get().setSubCategory(subCategory.get());
+        board.get().setTitle(editBoard.getTitle());
+        board.get().setContent(editBoard.getContent());
+        if(board.get().getSubCategory().getId()!=subCategory.get().getId()){
+            board.get().getSubCategory().removeBoard(board.get());
+            subCategory.get().addBoard(board.get());
+        }
+        boardRepository.save(board.get());
+        subCategoryRepository.save(subCategory.get());
+
+        response.status=true;
+        response.object=board;
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

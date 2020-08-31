@@ -8,6 +8,8 @@ import "aos/dist/aos.css";
 import VueSidebarMenu from 'vue-sidebar-menu'
 import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
 import VModal from 'vue-js-modal'
+
+import vuetify from './plugins/vuetify';
 //import cors from 'cors'
 
 Vue.use(VModal, { dynamic: true })
@@ -19,8 +21,9 @@ new Vue({
   created() {
     AOS.init({ disable: "phone" });
   },
-  
+
   router,
   store,
-  render: h => h(App),
+  vuetify,
+  render: h => h(App)
 }).$mount('#app')

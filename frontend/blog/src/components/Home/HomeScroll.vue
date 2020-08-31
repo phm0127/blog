@@ -1,16 +1,17 @@
 <template>
   <div style="margin-top: 0; padding-top:0;">
        <body>
-<section>
+    <section>
       
-        <div class="container" >
-            <div class="swipe" style="background-color : #000000; color:#ffffff; width:200px; height:200px; border-radius: 70%; display:block;">
-                <p>About  </p>
+        <div class="container" style="display:flex;">
+            <div class="swipe" style="background-color : #000000; color:#ffffff; width:200px; height:200px; border-radius: 70%; text-align:center;">
+                
+                <p style="margin-top:40px;">About</p>
                 <h1>Me</h1>
                 
-                </div>
-                <div id="arrow" style="color:black; display:block">
             </div>
+                <div id="arrow" style="color:black;"></div>
+        
             
         </div>
     </section>

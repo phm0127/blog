@@ -24,7 +24,7 @@
   </div>
 </div>
 <!-- END Lamp -->
-<section class="error">
+<section class="errors">
   <!-- Content -->
   <div class="error__content">
     <div class="error__message message">
@@ -216,7 +216,7 @@ button {
 			/* 2. CONTENT */
 /***********************************/
 /* 2.1. Section error */
-.error {
+.errors {
   min-height: 100vh;
   position: relative;
   padding: 240px 0;
@@ -486,7 +486,7 @@ button {
 /***********************************
 			/* 3. RESPONSIVE */
 /***********************************/
-.error {
+.errors {
   overflow: hidden;
   max-height: 100vh;
 }
@@ -546,7 +546,7 @@ button {
     transform: none;
     padding-top: 300px;
   }
-  .error {
+  .errors {
     padding-top: 0;
     padding-bottom: 100px;
     height: 100vh;

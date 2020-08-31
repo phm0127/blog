@@ -3,14 +3,14 @@
 <div id="editor"></div>
   <div style="display:flex; padding : 20px;">
     <select v-model="selected" style="width:10%; font-size:20px; font-family: 'Bebas Neue', cursive; font-family: 'Do Hyeon', sans-serif; margin-right : 20px;">
-        <option selected disabled hidden value="default">메인 카테고리를 선택해주세요.</option>
+        <option selected disabled hidden value="default">다시 선택하기</option>
         <option v-for="option in categoryOptions" v-bind:key="option.value" v-bind:value="option.id">
             {{ option.value }}
         </option>
         
     </select>
      <select v-model="subselected" style="width:10%; font-size:20px; font-family: 'Bebas Neue', cursive; font-family: 'Do Hyeon', sans-serif;">
-        <option selected disabled hidden value="default">서브 카테고리를 선택해주세요.</option>
+        <option selected value="subCategoryID">서브 카테고리를 선택해주세요.</option>
         <option v-for="option in subcategoryOptions" v-bind:key="option.value" v-bind:value="option.id">
             {{ option.value }}
         </option>
@@ -26,16 +26,16 @@
         style="color:white; margin: 0 auto;"
         @click="write"
         >
-            글쓰기
+            수정하기
         </v-btn> 
   </div>
   <editor 
     ref="toastuiEditor"
     id="editor"
-    :initialValue="editorText"
+    :initialValue="viewerText"
     :options="editorOptions"
     height="91vh"
-    initialEditType="wysiwyg"
+    initialEditType="markdown"
     previewStyle="vertical"
     v-model="editorText"
     style="font-family: 'Bebas Neue', cursive; font-family: 'Do Hyeon', sans-serif;"
@@ -104,11 +104,16 @@ export default {
     components : {
         editor : Editor
     },
-    
+    props:{ 
+        subCategoryID:Number,
+        boardID:Number,
+        title:String,
+        viewerText:String
+    },
     data() {
         return {
           editorText: '',
-          title:'',
+          
           selected:'default',
           subselected:'default',
           editorOptions:{
@@ -143,14 +148,25 @@ export default {
             } 
             console.log(maincategoryArr)
         })
+        this.subselected=this.subCategoryID
+
     },
     methods:{
         write: function(){
-          axios.post('http://localhost:8080/board/board',{
+          axios.post('http://localhost:8080/board/editboard',{
+            boardID:this.boardID,
             type:0,
             title:this.title,
             content:this.$refs.toastuiEditor.invoke("getMarkdown"),
             subCategoryID:this.subselected
+          })
+          .then(()=>{
+              
+              this.$router.push('/portfolio')
+          })
+          .catch(res=>{
+              console.log(this.boardID)
+              console.log(res)
           })
           
         }

@@ -16,6 +16,7 @@ export default new Vuex.Store({
         page:'/',
         pageIndex:1,
         token:'',
+        isLogin:false,
         //authToken: VueCookies.get('auth-token'),
         user:{
             email:'',
