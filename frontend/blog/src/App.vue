@@ -68,7 +68,7 @@ export default {
       sessionStorage.removeItem("nickname")
       sessionStorage.removeItem("role")
       this.$store.state.isLogin=false;
-      this.$router.push('/')
+      this.$router.go()
     }
   }
   

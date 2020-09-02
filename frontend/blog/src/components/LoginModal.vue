@@ -59,6 +59,10 @@ export default {
     components:{
        NaverLogin,
    },
+   mounted(){
+       sessionStorage.setItem("lastVisit",this.$route.path)
+       
+   },
     methods:{
        callbackFunction,
        close(){
@@ -93,9 +97,8 @@ export default {
             
             })
             .then(response => {
-                console.log(response.data.object)
                 this.$store.state.user=response.data.object
-            
+                this.$router.go()
             })
             .catch(err=>{
                 console.log(err)

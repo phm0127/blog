@@ -136,7 +136,7 @@ import EditForm from '../components/Board/EditForm.vue'
 import LoginModal from '@/components/LoginModal.vue'
 
 export default {
-name:'Portfolio',
+name:'Blog',
     components : {
         SidebarMenu,
         Viewer,
@@ -156,7 +156,6 @@ name:'Portfolio',
 
         axios.get('http://localhost:8080/board/board',{
             params:{
-              
                 boardID:Number(this.boardID)
             }
         })
@@ -174,7 +173,7 @@ name:'Portfolio',
         
         axios.get('http://localhost:8080/board/maincategory',{
             params:{
-                key:0
+                key:1
             }
         })
         .then(res=>{
@@ -255,7 +254,7 @@ name:'Portfolio',
                 menu: [
                     {
                         header: true,
-                        title: '포트폴리오',
+                        title: '블로그',
                         hiddenOnCollapse: true,
                         
                        
@@ -308,7 +307,7 @@ name:'Portfolio',
       },
       modal_render(){
               this.$modal.show(CategoryModal,{
-                    type : "0",
+                    type : "1",
                     modal : this.$modal },{
                         name: 'dynamic-modal',
                         width : '500px',
@@ -321,13 +320,13 @@ name:'Portfolio',
               this.isWrite=false;
               this.subCategoryID=0;
               this.pageIndex=0;
-              this.$router.push("/portfolios/"+0)
+              this.$router.push("/blogs/"+0)
           }
           else if(item.functionType==2){
             this.subCategoryID=item.subCategoryID
             this.pageIndex=0;
             this.isWrite=false;
-            this.$router.push("/portfolios/"+item.subCategoryID)
+            this.$router.push("/blogs/"+item.subCategoryID)
             
           } 
           

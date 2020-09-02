@@ -17,6 +17,9 @@ export default {
         
         HomeScroll,
         HomeBanner
+    },
+    mounted(){
+        window.scrollTo(0,0);
     }
 }
 </script>

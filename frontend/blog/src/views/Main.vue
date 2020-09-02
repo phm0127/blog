@@ -21,11 +21,32 @@
       
   </div>
   </div>
+
+    
+           
+            <template >
+              <v-btn
+                color="black"
+                dark
+                absolute
+                bottom
+                large
+                right
+                fab
+                style="margin-bottom:5vh; margin-right:5vh;"
+                @click="modal_render"
+              >
+                <i class="fas fa-code"></i>
+              </v-btn>
+            </template>
+         
+
     </div>
 </template>
 
 <script>
 import MainLogo from '../components/Main/MainLogo.vue'
+import Credit from './Credit.vue'
 // import axios from 'axios'
 //import '@/assets/css/fontawesome.css'
 
@@ -40,12 +61,26 @@ export default {
     date() {
         return {
            token:'',
-            
+           
         }
+    },
+    mounted() {
+      window.scrollTo(0,0);  
     },
     created() {
         
         
+    },
+    methods:{
+        modal_render(){
+              this.$modal.show(Credit,{
+                    modal : this.$modal },{
+                        name: 'dynamic-modal',
+                        width : '800px',
+                        height : '400px',
+                        draggable: true,
+            })
+        },
     }
 }
 </script>

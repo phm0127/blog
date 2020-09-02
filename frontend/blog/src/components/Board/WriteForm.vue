@@ -35,7 +35,7 @@
     :initialValue="editorText"
     :options="editorOptions"
     height="91vh"
-    initialEditType="wysiwyg"
+    initialEditType="markdown"
     previewStyle="vertical"
     v-model="editorText"
     style="font-family: 'Bebas Neue', cursive; font-family: 'Do Hyeon', sans-serif;"
@@ -104,7 +104,9 @@ export default {
     components : {
         editor : Editor
     },
-    
+    props:{
+      type:Number,
+    },
     data() {
         return {
           editorText: '',
@@ -130,7 +132,7 @@ export default {
     mounted() {
         axios.get('http://localhost:8080/board/maincategory',{
             params:{
-                key:0
+                key:this.type
             }
         })
         .then(res=>{
@@ -147,10 +149,14 @@ export default {
     methods:{
         write: function(){
           axios.post('http://localhost:8080/board/board',{
-            type:0,
+            type:this.type,
             title:this.title,
             content:this.$refs.toastuiEditor.invoke("getMarkdown"),
             subCategoryID:this.subselected
+            
+          })
+          .then(()=>{
+            this.$router.go()
           })
           
         }

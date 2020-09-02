@@ -105,6 +105,7 @@ export default {
         editor : Editor
     },
     props:{ 
+        type:Number,
         subCategoryID:Number,
         boardID:Number,
         title:String,
@@ -135,7 +136,7 @@ export default {
     mounted() {
         axios.get('http://localhost:8080/board/maincategory',{
             params:{
-                key:0
+                key:this.type
             }
         })
         .then(res=>{
@@ -155,17 +156,17 @@ export default {
         write: function(){
           axios.post('http://localhost:8080/board/editboard',{
             boardID:this.boardID,
-            type:0,
+            type:this.type,
             title:this.title,
             content:this.$refs.toastuiEditor.invoke("getMarkdown"),
             subCategoryID:this.subselected
           })
           .then(()=>{
+              this.$router.go()
               
-              this.$router.push('/portfolio')
           })
           .catch(res=>{
-              console.log(this.boardID)
+              
               console.log(res)
           })
           

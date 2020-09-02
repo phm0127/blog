@@ -5,8 +5,11 @@ import Agreement from '../views/Agreement.vue'
 import Intro from '../views/Home.vue'
 import Portfolio from '../views/Portfolio.vue'
 import PortfolioViewer from '../views/PortfolioViewer.vue'
+import Blog from '../views/Blog.vue'
+import BlogView from '../views/BlogView.vue'
 import NotFoundPage from '../views/NotFoundPage.vue'
 import Error from '../views/Error.vue'
+import Credit from '../views/Credit.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -25,10 +28,15 @@ const routes = [
         name : "Intro",
         component : Intro
     },
-    
     {
         path: '/portfolio',
         name : "Portfolio",
+        component : Portfolio
+    },
+    {
+        path: '/portfolios/:subCategoryID',
+        name : "Portfolio",
+        props:true,
         component : Portfolio
     },
     {
@@ -36,6 +44,28 @@ const routes = [
         name : "Portfolioviewer",
         props: true,
         component : PortfolioViewer
+    },
+    {
+        path: '/blog',
+        name : "Blog",
+        component : Blog
+    },
+    {
+        path: '/blogs/:subCategoryID',
+        name : "Blog",
+        props:true,
+        component : Blog
+    },
+    {
+        path: '/blog/:boardID',
+        name : "BlogView",
+        props: true,
+        component : BlogView
+    },
+    {
+        path: '/credit',
+        name : "Credit",
+        component : Credit
     },
     {
         path: '/error',

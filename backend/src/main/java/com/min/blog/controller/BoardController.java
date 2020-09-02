@@ -1,24 +1,20 @@
 package com.min.blog.controller;
 
 
-import com.min.blog.dto.BoardListDTO;
-import com.min.blog.dto.EditBoard;
-import com.min.blog.dto.FullCategory;
-import com.min.blog.dto.WriteBoard;
+import com.min.blog.dto.*;
 import com.min.blog.model.*;
 import com.min.blog.repository.BoardRepository;
 import com.min.blog.repository.CommentRepository;
 import com.min.blog.repository.MainCategoryRepository;
 import com.min.blog.repository.SubCategoryRepository;
+import com.min.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Comparator;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @CrossOrigin(origins = { "*" })
@@ -33,18 +29,21 @@ public class BoardController {
     MainCategoryRepository mainCategoryRepository;
     @Autowired
     SubCategoryRepository subCategoryRepository;
-
+    @Autowired
+    UserService userService;
 
     @GetMapping("/maincategory")
     public Object getCategory(@RequestParam int key){
         BasicResponse response = new BasicResponse();
-        BoardType type = BoardType.BLOG;
+        final BoardType type;
         if(key==0){
             type=BoardType.PORTFOLIO;
+        }else{
+            type=BoardType.BLOG;
         }
 
         response.status=true;
-        response.object= mainCategoryRepository.findAllByType(type).stream().sorted(Comparator.comparingInt(MainCategory::getSequenceNo)).collect(Collectors.toList());
+        response.object= mainCategoryRepository.findAllByType(type).stream().filter(mainCategory -> mainCategory.getType().equals(type)).sorted(Comparator.comparingInt(MainCategory::getSequenceNo)).collect(Collectors.toList());
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
@@ -129,7 +128,7 @@ public class BoardController {
         subCategory.setSequenceNo(order);
         mainCategory.get().addSubCategory(subCategory);
         mainCategoryRepository.save(mainCategory.get());
-        subCategoryRepository.save(subCategory);
+        //subCategoryRepository.save(subCategory);
 
         response.status=true;
         return new ResponseEntity<>(response, HttpStatus.OK);
@@ -140,17 +139,20 @@ public class BoardController {
         BasicResponse response = new BasicResponse();
         System.out.println(key+","+pageIndex);
         //int key=(int) map.get("type");
-        BoardType type = BoardType.BLOG;
+        final BoardType type;
         if(key==0){
             type=BoardType.PORTFOLIO;
+        }else{
+            type=BoardType.BLOG;
         }
+
         //int pageIndex = (Integer)map.getOrDefault("pageIndex",0);
 
-        PageRequest pageRequest = PageRequest.of(pageIndex,10);
+        PageRequest pageRequest = PageRequest.of(pageIndex,5);
         BoardListDTO boardListDTO = new BoardListDTO();
         boardListDTO.setPageIndex(pageIndex);
-        boardListDTO.setTotalPage(boardRepository.findAll(pageRequest).getTotalElements());
-        boardListDTO.setBoards(boardRepository.findAll(pageRequest).stream().sorted(Comparator.comparing(BaseTimeEntity::getCreatedDate)).collect(Collectors.toList()));
+        boardListDTO.setTotalPage(boardRepository.findAll(pageRequest).stream().filter(board -> board.getType()==type).count());
+        boardListDTO.setBoards(boardRepository.findAll(pageRequest).stream().filter(board -> board.getType()==type).sorted(Comparator.comparing(BaseTimeEntity::getCreatedDate)).collect(Collectors.toList()));
 
         response.status=true;
         response.object=boardListDTO;
@@ -158,13 +160,12 @@ public class BoardController {
     }
 
     @GetMapping("/boardlist")
-    public Object getBoardList(@RequestBody Map map){
+    public Object getBoardList(@RequestParam int pageIndex, @RequestParam int subCategoryID){
         BasicResponse response = new BasicResponse();
 
-        long subCategoryID=(Long) map.get("subCategoryID");
+        long id=subCategoryID;
 
-        int pageIndex = (Integer)map.getOrDefault("pageIndex",0);
-        Optional<SubCategory> subCategory = subCategoryRepository.findById(subCategoryID);
+        Optional<SubCategory> subCategory = subCategoryRepository.findById(id);
         if(!subCategory.isPresent()){
             response.status=false;
             response.data="서브카테고리 정보 없음";
@@ -256,6 +257,55 @@ public class BoardController {
 
         response.status=true;
         response.object=board;
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @PostMapping("/comment")
+    private Object addComment(@RequestBody CommentDTO commentDTO){
+        BasicResponse response = new BasicResponse();
+        Optional<User> user = userService.findById(commentDTO.getUserId());
+        System.out.println("!!!!!!!!!!!!");
+        if(!user.isPresent()){
+            response.status=false;
+            System.out.println("유저 정보 없음");
+            return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
+        }
+        Optional<Board> board = boardRepository.findById(commentDTO.getBoardId());
+        if(!board.isPresent()){
+            response.status=false;
+            System.out.println("게시글 정보 없음");
+            return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
+        }
+        Comment comment = new Comment();
+        comment.setUser(user.get());
+        comment.setBoard(board.get());
+        comment.setContents(commentDTO.getComment());
+        board.get().addComment(comment);
+        boardRepository.save(board.get());
+        //commentRepository.save(comment);
+        response.status=true;
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    @GetMapping("/comment")
+    private Object getComment(@RequestParam int boardId){
+        BasicResponse response = new BasicResponse();
+        long id =boardId;
+        Optional<Board> board = boardRepository.findById(id);
+
+        if(!board.isPresent()){
+            response.status=false;
+            System.out.println("게시글 정보 없음");
+            return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
+        }
+        List<CommentListDTO> list = new ArrayList<>();
+        for(Comment comment : commentRepository.findAllByBoard(board.get()).stream().sorted(Comparator.comparing(BaseTimeEntity::getCreatedDate)).collect(Collectors.toList())){
+            CommentListDTO commentListDTO = new CommentListDTO();
+            commentListDTO.setComment(comment);
+            commentListDTO.setUser(comment.getUser());
+            list.add(commentListDTO);
+        }
+        response.status=true;
+        response.object=list;
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

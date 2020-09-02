@@ -11,6 +11,7 @@ import java.util.Optional;
 public class UserService {
     @Autowired
     UserRepository userRepository;
+    public Optional<User> findById(Long id){ return userRepository.findById(id);}
 
     public Optional<User> findByEmail(String email){
         return userRepository.findByEmail(email);

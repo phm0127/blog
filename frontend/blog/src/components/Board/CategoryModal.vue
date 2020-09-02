@@ -58,6 +58,9 @@ import axios from 'axios'
 
 
 export default {
+    props:{
+      type:Number,
+    },
     data() {
         return {
             selectCategory:'main',
@@ -75,7 +78,7 @@ export default {
     mounted(){
         axios.get('http://localhost:8080/board/maincategory',{
             params:{
-                key:0
+                key:Number(this.type)
             }
         })
         .then(res=>{
@@ -95,10 +98,11 @@ export default {
            axios.post('http://localhost:8080/board/maincategory',{
                name: this.message,
                order:this.categoryOptions.length,
-               type:0
+               type:Number(this.type)
            })
            .then(()=>{
-               
+               this.$emit('close')
+               this.$router.go()
            })
            .error(()=>{
                 this.$router.push({name:'Error',query:{msg:'메인 카테고리를 추가할 수 없습니다.'}})
@@ -112,10 +116,11 @@ export default {
                mainCategoryID:this.selected,
                name: this.message,
                order:this.categoryOptions.length,
-               type:0
+               type:Number(this.type)
            })
-           .then(res=>{
-               console.log(res);
+           .then(()=>{
+               this.$emit('close')
+               this.$router.go()
            })
            .error(()=>{
                 this.$router.push({name:'Error',query:{msg:'서브 카테고리를 추가할 수 없습니다.'}})

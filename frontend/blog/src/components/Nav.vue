@@ -1,11 +1,11 @@
 <template>
     <div style="z-index:2; margin : 0 auto;">
     <ul class="nav" style="position:fixed; z-index:2; margin : 0 auto; left:0; right:0; ">
-        <li><a v-on:click="movepage('Main',1)" class="slid" style="color: #ffffff;">Alpha</a></li>
-        <li><a v-on:click="movepage('Intro',2)" style="color: #ffffff;">Beta</a></li>
-        <li><a v-on:click="movepage('Portfolio',3)" style="color: #ffffff;">Gamma</a></li>
-        <li><a href="#/4" style="color: #ffffff;">Delta</a></li>
-        <li><a href="#/5" style="color: #ffffff;">Epsilon</a></li>
+        <li><a v-on:click="movepage('Main',1)" class="slid" style="color: #ffffff;">Home</a></li>
+        <li><a v-on:click="movepage('Intro',2)" style="color: #ffffff;">About me</a></li>
+        <li><a v-on:click="movepage('Portfolio',3)" style="color: #ffffff;">Portfolio</a></li>
+        <li><a v-on:click="movepage('Blog',3)" style="color: #ffffff;">Blog</a></li>
+        
         <li class="slide1"></li>
         <li class="slide2"></li>
     </ul>
@@ -28,9 +28,9 @@ export default {
      name : 'Nav',
      
     mounted : function(){
-    if(localStorage.getItem('pageIndex')==null){
-      localStorage.setItem("pageIndex",1)
-    }
+    
+    localStorage.setItem("pageIndex",1)
+    
     
     $(".nav a").on("click", function () {
     var position = $(this).parent().position();

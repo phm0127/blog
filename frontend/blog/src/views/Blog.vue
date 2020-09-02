@@ -1,8 +1,8 @@
 <template>
 <div>
     <sidebar-menu :menu="menu" @item-click="onItemClick" :relative="true" style="float:left; height:170vh; z-index:1;"   />
-    <board-list v-if="!isWrite" :type="0" v-bind:subCategoryID="subCategoryID" />
-    <write-form v-if="isWrite" style="text-align:left;" :type="0" />
+    <board-list v-if="!isWrite" :type="1" v-bind:subCategoryID="subCategoryID" />
+    <write-form v-if="isWrite" style="text-align:left;" :type="1"/>
    
     <v-speed-dial
         v-model="fab"
@@ -65,7 +65,7 @@ import BoardList from '../components/Board/BoardList.vue'
 import CategoryModal from '@/components/Board/CategoryModal.vue'
 import { SidebarMenu } from 'vue-sidebar-menu'
 export default {
-name:'Portfolio',
+name:'Blog',
     components : {
         SidebarMenu,
         WriteForm,
@@ -90,7 +90,7 @@ name:'Portfolio',
 
         axios.get('http://localhost:8080/board/maincategory',{
             params:{
-                key:0
+                key:1
             }
         })
         .then(res=>{
@@ -126,7 +126,7 @@ name:'Portfolio',
                 menu: [
                     {
                         header: true,
-                        title: '포트폴리오',
+                        title: '블로그',
                         hiddenOnCollapse: true,
                         
                        
@@ -173,7 +173,7 @@ name:'Portfolio',
       },
       modal_render(){
               this.$modal.show(CategoryModal,{
-                    type : "0",
+                    type : "1",
                     modal : this.$modal },{
                         name: 'dynamic-modal',
                         width : '500px',
@@ -186,13 +186,13 @@ name:'Portfolio',
               this.isWrite=false;
               this.subCategoryID=0;
               this.pageIndex=0;
-              this.$router.push("/portfolios/"+0)
+              this.$router.push("/blogs/"+0)
           }
           else if(item.functionType==2){
             this.subCategoryID=item.subCategoryID
             this.pageIndex=0;
             this.isWrite=false;
-            this.$router.push("/portfolios/"+item.subCategoryID)
+            this.$router.push("/blogs/"+item.subCategoryID)
             
           } 
           
