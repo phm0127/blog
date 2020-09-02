@@ -137,7 +137,7 @@ public class BoardController {
     @GetMapping("/allboardlist")
     public Object getAllBoardList(@RequestParam int key,@RequestParam int pageIndex){
         BasicResponse response = new BasicResponse();
-        System.out.println(key+","+pageIndex);
+
         //int key=(int) map.get("type");
         final BoardType type;
         if(key==0){
@@ -185,7 +185,7 @@ public class BoardController {
     @GetMapping("/board")
     public Object getBoard(@RequestParam int boardID){
         BasicResponse response = new BasicResponse();
-        System.out.println(boardID);
+
         long id=boardID;
         Optional<Board> board = boardRepository.findById(id);
 
@@ -231,7 +231,7 @@ public class BoardController {
     @PostMapping("/editboard")
     public Object editBoard(@RequestBody EditBoard editBoard){
         BasicResponse response = new BasicResponse();
-        System.out.println(editBoard.getBoardID());
+
         Optional<Board> board = boardRepository.findById(editBoard.getBoardID());
         if(!board.isPresent()){
             response.status=false;
@@ -242,7 +242,7 @@ public class BoardController {
         Optional<SubCategory> subCategory = subCategoryRepository.findById(editBoard.getSubCategoryID());
         if(!subCategory.isPresent()){
             response.status=false;
-            System.out.println("서브 카테고리 정보 없음");
+            response.data="서브 카테고리 정보 없음";
             return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
         }
         board.get().setSubCategory(subCategory.get());
@@ -264,16 +264,15 @@ public class BoardController {
     private Object addComment(@RequestBody CommentDTO commentDTO){
         BasicResponse response = new BasicResponse();
         Optional<User> user = userService.findById(commentDTO.getUserId());
-        System.out.println("!!!!!!!!!!!!");
-        if(!user.isPresent()){
+       if(!user.isPresent()){
             response.status=false;
-            System.out.println("유저 정보 없음");
+            response.data="유저 정보 없음";
             return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
         }
         Optional<Board> board = boardRepository.findById(commentDTO.getBoardId());
         if(!board.isPresent()){
             response.status=false;
-            System.out.println("게시글 정보 없음");
+            response.data="게시글 정보 없음";
             return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
         }
         Comment comment = new Comment();
@@ -294,7 +293,7 @@ public class BoardController {
 
         if(!board.isPresent()){
             response.status=false;
-            System.out.println("게시글 정보 없음");
+            response.data="게시글 정보 없음";
             return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
         }
         List<CommentListDTO> list = new ArrayList<>();

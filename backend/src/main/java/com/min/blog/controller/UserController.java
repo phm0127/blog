@@ -71,7 +71,7 @@ public class UserController {
             con.setRequestProperty("Authorization","Bearer "+access_token);
             int responseCode = con.getResponseCode();
             BufferedReader br;
-            System.out.println("responseCode="+responseCode);
+
 
             if(responseCode==200) { // 정상 호출
                 br = new BufferedReader(new InputStreamReader(con.getInputStream()));
