@@ -76,7 +76,7 @@ export default {
        
     },
     mounted(){
-        axios.get('http://localhost:8080/board/maincategory',{
+        axios.get('http://www.1000min.kr:8080/board/maincategory',{
             params:{
                 key:Number(this.type)
             }
@@ -89,13 +89,13 @@ export default {
                     id : maincategoryArr[i].id
                 })
             } 
-            console.log(maincategoryArr)
+            
         })
     },
 
     methods:{
        addMainCategory : function(){
-           axios.post('http://localhost:8080/board/maincategory',{
+           axios.post('http://www.1000min.kr:8080/board/maincategory',{
                name: this.message,
                order:this.categoryOptions.length,
                type:Number(this.type)
@@ -111,8 +111,8 @@ export default {
 
 
        addSubCategory : function(){
-           console.log(this.selected)
-           axios.post('http://localhost:8080/board/subcategory',{
+           
+           axios.post('http://www.1000min.kr:8080/board/subcategory',{
                mainCategoryID:this.selected,
                name: this.message,
                order:this.categoryOptions.length,

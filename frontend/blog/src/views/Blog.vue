@@ -88,7 +88,7 @@ name:'Blog',
             this.role=sessionStorage.getItem('role')
         }
 
-        axios.get('http://localhost:8080/board/maincategory',{
+        axios.get('http://www.1000min.kr:8080/board/maincategory',{
             params:{
                 key:1
             }
@@ -97,7 +97,7 @@ name:'Blog',
             let maincategoryArr = res.data.object;
             for(let i=0; i<maincategoryArr.length;i++){
                 let tempChild=[]
-                console.log(maincategoryArr[i].subcategories)
+                
                 for(let j=0;j<maincategoryArr[i].subcategories.length;j++){
                     
                     tempChild.push({

@@ -13,13 +13,11 @@ export default {
     this.$store.state.token=this.$route.query.token
     let curURL = document.location.href
     let token = curURL.substring(curURL.indexOf('=')+1,curURL.indexOf('&'))
-    console.log(document.location.href)
-    console.log(token)
-    console.log(this.$route.query.access_token)
+    
 
     axios({
       method: 'post',
-      url : 'http://localhost:8080/user/naverlogin',
+      url : 'http://www.1000min.kr:8080/user/naverlogin',
       data : {
         token
         //Authorization : 'Bearer ' + token
@@ -34,7 +32,7 @@ export default {
         sessionStorage.setItem("email",response.data.object.email)
         sessionStorage.setItem("nickname",response.data.object.nickname)
         sessionStorage.setItem("role",response.data.object.role)
-        console.log(response.data.object)
+        
         localStorage.setItem("pageIndex",1)
         this.$store.state.isLogin=true;
         if(sessionStorage.getItem("lastVisit")!=null){

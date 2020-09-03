@@ -152,7 +152,7 @@ public class BoardController {
         BoardListDTO boardListDTO = new BoardListDTO();
         boardListDTO.setPageIndex(pageIndex);
         boardListDTO.setTotalPage(boardRepository.findAll(pageRequest).stream().filter(board -> board.getType()==type).count());
-        boardListDTO.setBoards(boardRepository.findAll(pageRequest).stream().filter(board -> board.getType()==type).sorted(Comparator.comparing(BaseTimeEntity::getCreatedDate)).collect(Collectors.toList()));
+        boardListDTO.setBoards(boardRepository.findAll(pageRequest).stream().filter(board -> board.getType()==type).sorted(Comparator.comparing(BaseTimeEntity::getCreatedDate).reversed()).collect(Collectors.toList()));
 
         response.status=true;
         response.object=boardListDTO;
@@ -175,7 +175,7 @@ public class BoardController {
         BoardListDTO boardListDTO = new BoardListDTO();
         boardListDTO.setPageIndex(pageIndex);
         boardListDTO.setTotalPage(boardRepository.findAllBySubCategory(subCategory.get(), pageRequest).getTotalElements());
-        boardListDTO.setBoards(boardRepository.findAllBySubCategory(subCategory.get(), pageRequest).stream().sorted(Comparator.comparing(BaseTimeEntity::getCreatedDate)).collect(Collectors.toList()));
+        boardListDTO.setBoards(boardRepository.findAllBySubCategory(subCategory.get(), pageRequest).stream().sorted(Comparator.comparing(BaseTimeEntity::getCreatedDate).reversed()).collect(Collectors.toList()));
 
         response.status=true;
         response.object=boardListDTO;

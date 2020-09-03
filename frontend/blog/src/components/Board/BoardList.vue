@@ -60,7 +60,7 @@ export default {
     mounted() {
         window.scrollTo(0,0);
         if(this.subCategoryID<=0||this.subCategoryID==null){
-            axios.get('http://localhost:8080/board/allboardlist',{
+            axios.get('http://www.1000min.kr:8080/board/allboardlist',{
                 params:{
                     key:this.type,
                     pageIndex:this.pageIndex
@@ -68,13 +68,13 @@ export default {
                 })
                 .then(res => {
                    this.boardlist=res.data.object.boards
-                   console.log("all",this.type)
+                   
                    if((res.data.object.totalPage-1)>=0){
                        this.totalpage=Math.floor((res.data.object.totalPage-1)/5)+1
                    }else{
                        this.totalpage=0;
                    }
-                   console.log(this.totalpage)
+                   
                 })
                 .catch(err=>{
                     console.log(err)
@@ -82,7 +82,7 @@ export default {
 
         }
         else{
-            axios.get('http://localhost:8080/board/boardlist',{
+            axios.get('http://www.1000min.kr:8080/board/boardlist',{
                 params:{
                     subCategoryID:this.subCategoryID,
                     pageIndex:this.pageIndex
@@ -90,13 +90,13 @@ export default {
                 })
                 .then(res => {
                    this.boardlist=res.data.object.boards
-                   console.log(res.data.object)
+                   
                    if((res.data.object.totalPage-1)>=0){
                        this.totalpage=Math.floor((res.data.object.totalPage-1)/5)+1
                    }else{
                        this.totalpage=0;
                    }
-                   console.log(this.totalpage)
+                   
                 })
                 .catch(err=>{
                     console.log(err)
@@ -120,7 +120,7 @@ export default {
         page(newVal){
         window.scrollTo(0,0);
         if(this.subCategoryID<=0||this.subCategoryID==null){
-            axios.get('http://localhost:8080/board/allboardlist',{
+            axios.get('http://www.1000min.kr:8080/board/allboardlist',{
                 params:{
                     key:this.type,
                     pageIndex:newVal-1
@@ -143,7 +143,7 @@ export default {
 
         }
         else{
-            axios.get('http://localhost:8080/board/boardlist',{
+            axios.get('http://www.1000min.kr:8080/board/boardlist',{
                 params:{
                     subCategoryID:this.subCategoryID,
                     pageIndex:newVal-1

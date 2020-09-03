@@ -24,16 +24,16 @@
               
             <div class="image-container left" data-aos="fade-left" data-aos-delay="50" data-aos-duration="1500" data-aos-easing="ease-in">
                 <div class="image-container left">
-                    <img src ="http://localhost/image/profile.jpg" alt="profile">
+                    <img src ="http://www.1000min.kr/image/profile.jpg" alt="profile">
                     
                 </div>
                 
-                <!-- <img src="http://localhost/image/test.jpg" alt="dark"> -->
+                <!-- <img src="http://www.1000min.kr/image/test.jpg" alt="dark"> -->
             </div>
                 
              
             <div class="image-container right " data-aos="fade-right" data-aos-delay="100" data-aos-duration="1500" data-aos-easing="ease-in">
-                <img src="http://localhost/image/coding.jpg" alt="umbrella">
+                <img src="http://www.1000min.kr/image/coding.jpg" alt="umbrella">
             </div>
            
         </div>
@@ -61,11 +61,11 @@
         <div class="zoom ">
             <div class="image-container left" data-aos="zoom-in-left" data-aos-delay="50" data-aos-duration="1500"
                 data-aos-easing="ease-in">
-                <img src="http://localhost/image/ku.jfif" alt="breaking bad">
+                <img src="http://www.1000min.kr/image/ku.jfif" alt="breaking bad">
             </div>
             <div class="image-container right " data-aos="zoom-in-right" data-aos-delay="100" data-aos-duration="1500"
                 data-aos-easing="ease-in">
-                <img src="http://localhost/image/ku.jpg" alt="Mind Hunter">
+                <img src="http://www.1000min.kr/image/ku.jpg" alt="Mind Hunter">
             </div>
         </div>
     
@@ -92,12 +92,12 @@
         <div class="flip ">
             <div class="image-container left" data-aos="flip-left" data-aos-delay="50" data-aos-duration="1500"
                 data-aos-easing="ease-in">
-                <img src="http://localhost/image/ssafy1.jpg" alt="brooklyn nine nine">
+                <img src="http://www.1000min.kr/image/ssafy1.jpg" alt="brooklyn nine nine">
             </div>
            
             <div class="image-container right " data-aos="flip-right" data-aos-delay="100" data-aos-duration="1500"
                 data-aos-easing="ease-in">
-                <img src="http://localhost/image/ssafy2.jpg" alt="one-day-at-a-time">
+                <img src="http://www.1000min.kr/image/ssafy2.jpg" alt="one-day-at-a-time">
             </div>
         </div>
     
@@ -124,12 +124,12 @@
         <div class="scroll-right-left ">
             <div class="image-container left" data-aos="fade-left" data-aos-delay="50" data-aos-duration="1500"
                 data-aos-easing="ease-in">
-                <img src="http://localhost/image/aptproject1.jpg" alt="Killing eve">
+                <img src="http://www.1000min.kr/image/aptproject1.jpg" alt="Killing eve">
             </div>
     
             <div class="image-container right" style="height:500px;" data-aos="fade-right" data-aos-delay="100" data-aos-duration="1500"
                 data-aos-easing="ease-in">
-                <img src="http://localhost/image/sns.png" alt="Elite">
+                <img src="http://www.1000min.kr/image/sns.png" alt="Elite">
             </div>
         </div>
     
@@ -156,11 +156,11 @@
         <div class="zoom ">
             <div class="image-container left" data-aos="zoom-in-up" data-aos-delay="50" data-aos-duration="1500"
                 data-aos-easing="ease-in">
-                <img src="http://localhost/image/toy.jpg" alt="fma">
+                <img src="http://www.1000min.kr/image/toy.jpg" alt="fma">
             </div>
             <div class="image-container right " data-aos="zoom-in-down" data-aos-delay="100" data-aos-duration="1500"
                 data-aos-easing="ease-in">
-                <img src="http://localhost/image/test.jpg" alt="demon slayer">
+                <img src="http://www.1000min.kr/image/test.jpg" alt="demon slayer">
             </div>
         </div>
     </section>

@@ -7,7 +7,7 @@
         </div>
             <NaverLogin
             client-id="RnP9opRdc0Dm21kuldCI"
-            callback-url="http://localhost/agreement"
+            callback-url="http://www.1000min.kr/agreement"
             v-bind:is-popup="false"
             v-bind:button-type="3"
             v-bind:button-height="50"
@@ -32,7 +32,7 @@ import axios from 'axios'
 import NaverLogin from 'vue-naver-login'
 
 let callbackFunction = (status) => {
-    console.log("here!!!!!!!!")
+   
     if (status) {
     /* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
     var email = NaverLogin.user.getEmail();
@@ -53,7 +53,7 @@ let callbackFunction = (status) => {
 export default {
     data() {
         return {
-             naverLoginURL: 'https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=6yYgEm5_qFsTYNEyzwaO&redirect_uri=http://localhost:8080/user/signin/naver/access&state=20200708',
+             naverLoginURL: 'https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=6yYgEm5_qFsTYNEyzwaO&redirect_uri=http://www.1000min.kr:8080/user/signin/naver/access&state=20200708',
         }
     },
     components:{
@@ -71,7 +71,7 @@ export default {
        },
        getuser(){
         this.$emit('close')
-           axios.get('http://localhost:8080/user/getuser',{
+           axios.get('http://www.1000min.kr:8080/user/getuser',{
             // headers:{
             //     'jwt-auth-token':this.$store.state.token
             // },
@@ -89,7 +89,7 @@ export default {
        },
        logout(){
         this.$emit('close')
-           axios.get('http://localhost:8080/user/logout',{
+           axios.get('http://www.1000min.kr:8080/user/logout',{
             headers:{
                 "token":this.$store.state.authToken,
                  Authorization:this.token

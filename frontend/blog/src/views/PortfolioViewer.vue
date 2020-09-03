@@ -154,7 +154,7 @@ name:'Portfolio',
             this.role=sessionStorage.getItem('role')
         }
 
-        axios.get('http://localhost:8080/board/board',{
+        axios.get('http://www.1000min.kr:8080/board/board',{
             params:{
               
                 boardID:Number(this.boardID)
@@ -166,13 +166,13 @@ name:'Portfolio',
             this.viewerText=res.data.object.content
             this.title=res.data.object.title
             this.subCategoryID=Number(res.data.data)
-            console.log(res.data.object)
+            
             
         })
         
 
         
-        axios.get('http://localhost:8080/board/maincategory',{
+        axios.get('http://www.1000min.kr:8080/board/maincategory',{
             params:{
                 key:0
             }
@@ -199,13 +199,13 @@ name:'Portfolio',
             
         })
 
-        axios.get('http://localhost:8080/board/comment',{
+        axios.get('http://www.1000min.kr:8080/board/comment',{
           params:{
             boardId:Number(this.boardID)
           }
         })
         .then(res=>{
-          console.log(res)
+          
           let clist = res.data.object
           if(clist.length==0){
             this.commentlist.push({
@@ -347,13 +347,13 @@ name:'Portfolio',
         }
         this.adding=true
         
-        axios.post('http://localhost:8080/board/comment',{
+        axios.post('http://www.1000min.kr:8080/board/comment',{
           userId:sessionStorage.getItem("userID"),
           boardId:Number(this.boardID),
           comment:this.comment
         })
-        .then((res)=>{
-          console.log(res)
+        .then(()=>{
+          
           
           this.$router.go()
         })

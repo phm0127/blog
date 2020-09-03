@@ -42,13 +42,24 @@ export default {
     
   },
   mounted(){
-    
-    if(sessionStorage.getItem("name")!=null){
-      this.name=sessionStorage.getItem("name")
-      console.log(this.name)
-      this.$store.state.isLogin=true;
-    }else{
-      this.$store.state.isLogin=false;
+    var filter = "win16|win32|win64|mac|macintel"; 
+    if ( navigator.platform ) {
+        if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) {
+          //mobile
+          this.$router.push({name:'Error',query:{msg:'현재, 모바일 환경은 지원하지 않습니다.'}})
+        }
+        else { 
+          //pc
+         
+        }
+
+      if(sessionStorage.getItem("name")!=null){
+        this.name=sessionStorage.getItem("name")
+        
+        this.$store.state.isLogin=true;
+      }else{
+        this.$store.state.isLogin=false;
+      }
     }
   },
   methods:{

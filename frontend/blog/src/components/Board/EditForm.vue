@@ -95,8 +95,7 @@ hljs.registerLanguage('nginx', nginx);
 hljs.registerLanguage('kotlin', kotlin);
 hljs.registerLanguage('gradle', gradle);
 
-//console.log(colorSyntax)
-console.log(codeSyntaxHighlight)
+
 
 //
 
@@ -134,7 +133,7 @@ export default {
         }
     },
     mounted() {
-        axios.get('http://localhost:8080/board/maincategory',{
+        axios.get('http://www.1000min.kr:8080/board/maincategory',{
             params:{
                 key:this.type
             }
@@ -147,14 +146,14 @@ export default {
                     id : maincategoryArr[i].id
                 })
             } 
-            console.log(maincategoryArr)
+            
         })
         this.subselected=this.subCategoryID
 
     },
     methods:{
         write: function(){
-          axios.post('http://localhost:8080/board/editboard',{
+          axios.post('http://www.1000min.kr:8080/board/editboard',{
             boardID:this.boardID,
             type:this.type,
             title:this.title,
@@ -174,7 +173,7 @@ export default {
     },
      watch:{
         selected : function (newVal) {
-          axios.get('http://localhost:8080/board/subcategory',{
+          axios.get('http://www.1000min.kr:8080/board/subcategory',{
             params:{
                 mainCategoryID:newVal
             }
