@@ -2,11 +2,11 @@
 It's running on [Blog](http://1000min.kr)
 
 ## Overview
-> In Portfoilo tab, You can create/read/update/delete a portfoilo.
-> In Blog tab, You can create/read/update/delete a posting.
-> User only reads a portfolio or posting not create/updaet/delete.
-> User can sign in easily by social login.
-> User can add a comment after signing in.
+> In Portfoilo tab, You can create/read/update/delete a portfoilo.  
+> In Blog tab, You can create/read/update/delete a posting.  
+> User only reads a portfolio or posting not create/updaet/delete.  
+> User can sign in easily by social login.  
+> User can add a comment after signing in.  
 
 
 ## Before you use
