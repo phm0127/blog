@@ -23,10 +23,10 @@
 > &nbsp;
 > 
 > ~~~
-Development OS : Windows 10
-Deploy OS : Ubuntu 18.04 LTS
-IDE : IntelliJ IDEA
-~~~
+> Development OS : Windows 10
+> Deploy OS : Ubuntu 18.04 LTS
+> IDE : IntelliJ IDEA
+> ~~~
 
 ## Excution
 > [Frontend](https://github.com/phm0127/blog/blob/master/frontend/blog/README.md)
