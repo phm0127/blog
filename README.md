@@ -8,6 +8,8 @@
 > 소셜 로그인 기능을 통해 간편 로그인이 가능하고 로그인을 하지 않아도 댓글을 제외한 모든 기능을 사용할 수 있다.
 
 ## Stack & Environment
+
+### Stack
 > + Backend
 >   + Spring
 >   + java 8
@@ -22,11 +24,13 @@
 >   + TOAST UI (markdown editor)
 > &nbsp;
 > 
+### Environment
 > ~~~
 > Development OS : Windows 10
 > Deploy OS : Ubuntu 18.04 LTS
 > IDE : IntelliJ IDEA
 > ~~~
+---
 
 ## Excution
 > [Frontend](https://github.com/phm0127/blog/blob/master/frontend/blog/README.md)  
