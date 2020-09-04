@@ -1,6 +1,4 @@
 # Blog
-Web application providing CRUD service for portfolio or posting.
-
 It's running on [Blog](http://1000min.kr)
 
 ## Overview
