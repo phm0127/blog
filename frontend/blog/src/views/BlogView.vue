@@ -438,7 +438,7 @@ name:'Blog',
       },
 
        editcomment(id,comment){
-        axios.post('http://localhost:8080/board/editcomment',{
+        axios.post('http://www.1000min.kr:8080/board/editcomment',{
           commentId: id,
           boardId:Number(this.boardID),
           comment : comment
