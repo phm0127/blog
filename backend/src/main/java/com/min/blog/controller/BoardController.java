@@ -287,9 +287,14 @@ public class BoardController {
         comment.setContents(commentDTO.getComment());
         board.get().addComment(comment);
         boardRepository.save(board.get());
-        //commentRepository.save(comment);
         if(user.get().getRole()!=Role.ADMIN){
-            mailSender.sendNotification(adminEmail,board.get().getTitle(),FRONT_URL+"/board/"+board.get().getId(),user.get().getNickname(),comment.getContents());
+            final String url;
+            if(board.get().getType()==BoardType.PORTFOLIO){
+                url=FRONT_URL+"/protfolio/"+board.get().getId();
+            }else {
+                url=FRONT_URL+"/board/"+board.get().getId();
+            }
+            mailSender.sendNotification(adminEmail,board.get().getTitle(),url,user.get().getNickname(),comment.getContents());
         }
 
         response.status=true;
