@@ -8,6 +8,7 @@ import com.min.blog.repository.CommentRepository;
 import com.min.blog.repository.MainCategoryRepository;
 import com.min.blog.repository.SubCategoryRepository;
 import com.min.blog.service.UserService;
+import com.min.blog.util.MailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
@@ -31,6 +32,11 @@ public class BoardController {
     SubCategoryRepository subCategoryRepository;
     @Autowired
     UserService userService;
+    @Autowired
+    MailSender mailSender;
+
+    final String adminEmail="o_ogog@naver.com";
+    final String FRONT_URL="http://www.1000min.kr";
 
     @GetMapping("/maincategory")
     public Object getCategory(@RequestParam int key){
@@ -151,8 +157,8 @@ public class BoardController {
         PageRequest pageRequest = PageRequest.of(pageIndex,5);
         BoardListDTO boardListDTO = new BoardListDTO();
         boardListDTO.setPageIndex(pageIndex);
-        boardListDTO.setTotalPage(boardRepository.findAll(pageRequest).stream().filter(board -> board.getType()==type).count());
-        boardListDTO.setBoards(boardRepository.findAll(pageRequest).stream().filter(board -> board.getType()==type).sorted(Comparator.comparing(BaseTimeEntity::getCreatedDate).reversed()).collect(Collectors.toList()));
+        boardListDTO.setTotalPage(boardRepository.findAllByType(type,pageRequest).stream().count());
+        boardListDTO.setBoards(boardRepository.findAllByType(type,pageRequest).stream().sorted(Comparator.comparing(BaseTimeEntity::getCreatedDate).reversed()).collect(Collectors.toList()));
 
         response.status=true;
         response.object=boardListDTO;
@@ -282,6 +288,10 @@ public class BoardController {
         board.get().addComment(comment);
         boardRepository.save(board.get());
         //commentRepository.save(comment);
+        if(user.get().getRole()!=Role.ADMIN){
+            mailSender.sendNotification(adminEmail,board.get().getTitle(),FRONT_URL+"/board/"+board.get().getId(),user.get().getNickname(),comment.getContents());
+        }
+
         response.status=true;
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
