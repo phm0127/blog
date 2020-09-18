@@ -21,20 +21,90 @@
        <template v-for="(item, index) in commentlist">
           <v-list-item :key="item.title">
             <template v-slot:default="{  }">
-              <v-list-item-content>
-                <v-list-item-title v-text="item.title"></v-list-item-title>
+              <v-list-item-content v-if="!item.editstate">
+                <v-list-item-title v-text="item.title" style="color : #3F51B5; font-weight:bold;" v-if="item.uid==1"></v-list-item-title>
+                <v-list-item-title v-text="item.title"  style="font-weight:bold;" v-if="item.uid!=1"></v-list-item-title>
                 <v-list-item-content class="text--primary" v-text="item.headline" expand></v-list-item-content>
                 <v-list-item-subtitle v-text="item.subtitle"></v-list-item-subtitle>
+                
+              </v-list-item-content>
+              <v-list-item-content v-if="item.editstate">
+                <v-list-item-title v-text="item.title" style="color : #3F51B5; font-weight:bold;" v-if="item.uid==1"></v-list-item-title>
+                <v-list-item-title v-text="item.title"  style="font-weight:bold;" v-if="item.uid!=1"></v-list-item-title>
+                <v-list-item-content class="text--primary" v-text="item.headline" expand></v-list-item-content>
+                <v-list-item-subtitle v-text="item.subtitle"></v-list-item-subtitle>
+                <div>
+                  <v-textarea
+                    v-model="item.headline"
+                    :rules="rules"
+                    counter="1000"
+                    label="수정"
+                    outlined
+                    style="margin-top:50px; width:100%;"
+                    
+                  ></v-textarea>
+                  
+                </div> 
               </v-list-item-content>
 
               <v-list-item-action>
                 <v-list-item-action-text v-text="item.action"></v-list-item-action-text>
-                
+                <div v-if="item.editstate" style="float:right;">
+                  <v-btn class="ma-2" tile outlined color="success"  @click.stop="editcomment(item.cid,item.headline)" >
+                      <v-icon left bottom>mdi-pencil</v-icon> 수정
+                  </v-btn>
+                  <v-btn class="ma-2" tile outlined color="red"  @click="item.editstate=false" >
+                      <v-icon left bottom>mdi-cancel</v-icon> 취소
+                  </v-btn>
+                </div>
+                <div v-if="(role==admin||item.uid==uid)&&!item.editstate">
+                  <v-btn icon color="green" @click="item.editstate = true">
+                    <v-icon>mdi-pencil</v-icon>
+                  </v-btn>
+                  <v-btn icon color="pink" @click="deletedialog = true">
+                    <v-icon>mdi-delete</v-icon>
+                  </v-btn>
+                   <v-dialog
+                      v-model="deletedialog"
+                      max-width="340"
+                    >
+                      <v-card>
+                        <v-card-title class="headline">댓글을 삭제하시겠습니까?</v-card-title>
+
+                        <v-card-text>
+                          <span style="color:red;">삭제된 댓글</span>은 다시 <span style="color:red;">복구</span>할 수 없습니다.
+                        </v-card-text>
+
+                        <v-card-actions>
+                          <v-spacer></v-spacer>
+
+                          <v-btn
+                            color="black darken-1"
+                            text
+                            @click="deletedialog = false"
+                          >
+                            취소
+                          </v-btn>
+
+                          <v-btn
+                            color="red darken-1"
+                            text
+                            @click="deleteComment(item.cid)"
+                          >
+                            확인
+                          </v-btn>
+                        </v-card-actions>
+                      </v-card>
+                    </v-dialog>
+                </div>
 
                
               </v-list-item-action>
+              
             </template>
+            
           </v-list-item>
+          
 
           <v-divider
             v-if="index + 1 < commentlist.length"
@@ -68,9 +138,7 @@
           disabled
         
         ></v-textarea>
-
       </div>
-        
     </div>
     <edit-form v-if="isWrite" style="text-align:left;" :subCategoryID="subCategoryID" :boardID="boardID" :title="title" :viewerText="viewerText" :type="1" />
     <v-speed-dial
@@ -153,6 +221,9 @@ name:'Blog',
         if(sessionStorage.getItem('role')!=null){
             this.role=sessionStorage.getItem('role')
         }
+        if(sessionStorage.getItem('userID')!=null){
+            this.uid=sessionStorage.getItem('userID')
+        }
 
         axios.get('http://www.1000min.kr:8080/board/board',{
             params:{
@@ -219,6 +290,9 @@ name:'Blog',
                 action: clist[i].comment.createdDate.substring(0,4)+"년 "+clist[i].comment.createdDate.substring(5,7)+"월 "+clist[i].comment.createdDate.substring(8,10)+"일",
                 headline: clist[i].comment.contents,
                 title: clist[i].user.nickname,
+                cid : clist[i].comment.id,
+                uid : clist[i].user.id,
+                editstate:false,
                 subtitle: '',
                 
             })
@@ -251,6 +325,8 @@ name:'Blog',
                 isWrite:false,
                 createdDate:'',
                 adding:false,
+                uid : 0,
+                deletedialog: false,
                 menu: [
                     {
                         header: true,
@@ -353,6 +429,38 @@ name:'Blog',
         })
         .then(()=>{
           
+          
+          this.$router.go()
+        })
+        .catch((res)=>{
+          console.log(res)
+        })
+      },
+
+       editcomment(id,comment){
+        axios.post('http://localhost:8080/board/editcomment',{
+          commentId: id,
+          boardId:Number(this.boardID),
+          comment : comment
+        })
+        .then(()=>{
+          this.$router.go()
+        })
+        .catch((res)=>{
+          console.log(res)
+        })
+      },
+
+      deleteComment(cid){
+        
+        this.deletedialog=false
+        axios.get('http://www.1000min.kr:8080/board/deletecomment',{
+          params:{
+            boardId:Number(this.boardID),
+            commentId:cid
+          }
+        })
+        .then(()=>{
           
           this.$router.go()
         })

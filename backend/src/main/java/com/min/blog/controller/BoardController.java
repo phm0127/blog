@@ -290,7 +290,7 @@ public class BoardController {
         if(user.get().getRole()!=Role.ADMIN){
             final String url;
             if(board.get().getType()==BoardType.PORTFOLIO){
-                url=FRONT_URL+"/protfolio/"+board.get().getId();
+                url=FRONT_URL+"/portfolio/"+board.get().getId();
             }else {
                 url=FRONT_URL+"/board/"+board.get().getId();
             }
@@ -300,6 +300,7 @@ public class BoardController {
         response.status=true;
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
     @GetMapping("/comment")
     private Object getComment(@RequestParam int boardId){
         BasicResponse response = new BasicResponse();
@@ -320,6 +321,62 @@ public class BoardController {
         }
         response.status=true;
         response.object=list;
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @PostMapping("/editcomment")
+    private Object editComment(@RequestBody CommentEditDTO commentEditDTO){
+        BasicResponse response = new BasicResponse();
+        Optional<Board> board = boardRepository.findById(commentEditDTO.getBoardId());
+        if(!board.isPresent()){
+            response.status=false;
+            response.data="게시글 정보 없음";
+            return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
+        }
+
+        Optional<Comment> comment = commentRepository.findById(commentEditDTO.getCommentId());
+        if(!comment.isPresent()){
+            response.status=false;
+            response.data="댓글 정보 없음";
+            return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
+        }
+        comment.get().setContents(commentEditDTO.getComment());
+        commentRepository.save(comment.get());
+        board.get().getComments().remove(comment.get());
+        board.get().addComment(comment.get());
+        boardRepository.save(board.get());
+
+        if(comment.get().getUser().getRole()!=Role.ADMIN){
+            final String url;
+            if(comment.get().getBoard().getType()==BoardType.PORTFOLIO){
+                url=FRONT_URL+"/portfolio/"+comment.get().getBoard().getId();
+            }else {
+                url=FRONT_URL+"/board/"+comment.get().getBoard().getId();
+            }
+            mailSender.sendNotification(adminEmail,comment.get().getBoard().getTitle(),url,comment.get().getUser().getNickname(),comment.get().getContents());
+        }
+
+        response.status=true;
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/deletecomment")
+    private Object deleteComment(@RequestParam int boardId,@RequestParam int commentId){
+        BasicResponse response = new BasicResponse();
+        long id =boardId;
+        Optional<Board> board = boardRepository.findById(id);
+
+        if(!board.isPresent()){
+            response.status=false;
+            response.data="게시글 정보 없음";
+            return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
+        }
+        long cid =commentId;
+        Optional<Comment> comment = commentRepository.findById(cid);
+        board.get().getComments().remove(comment.get());
+        commentRepository.delete(comment.get());
+
+        response.status=true;
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
