@@ -1,6 +1,8 @@
 <template>
 <div>
+  <div style="height:7vh;"></div>
 <div id="editor"></div>
+  
   <div style="display:flex; padding : 20px;">
     <select v-model="selected" style="width:10%; font-size:20px; font-family: 'Bebas Neue', cursive; font-family: 'Do Hyeon', sans-serif; margin-right : 20px;">
         <option selected disabled hidden value="default">메인 카테고리를 선택해주세요.</option>

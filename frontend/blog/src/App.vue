@@ -3,10 +3,10 @@
 <v-top-naviation>
   <navbar/>
   <div style='float:right; z-index:3; width: 15vh; margin-top:0.5vh; text-align=center;'>
-        <div style="position:fixed; z-index:3; padding: 1vh auto;" v-if=!this.$store.state.isLogin><a v-on:click="modal_rendar()" style="padding: 0.6em 2em;
+        <div style="position:fixed; z-index:3; padding: 0vh auto;" v-if=!this.$store.state.isLogin><a v-on:click="modal_rendar()" style="padding: 0.6em 2em;
         font-size: 2vh; color:white;" >Login</a></div>
         
-        <div style="position:fixed; z-index:3; padding: 10px 20px;"  v-if=this.$store.state.isLogin>
+        <div style="position:fixed; z-index:3; padding: 0 auto;"  v-if=this.$store.state.isLogin>
           <a v-on:click="logout()" style="padding: 0.6em 2em; font-size: 2vh; color:white;">Logout</a>
         </div>
     </div>
@@ -70,7 +70,7 @@ export default {
                         name: 'dynamic-modal',
                         width : '330px',
                         height : '500px',
-                        draggable: true,
+                        draggable: false,
             })
     },
     logout(){
