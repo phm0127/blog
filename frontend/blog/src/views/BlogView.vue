@@ -1,7 +1,8 @@
 <template>
-<div>
-    <sidebar-menu :menu="menu" @item-click="onItemClick" :relative="true" style="float:left; height:170vh; z-index:1;"   />
-    <div style="padding-left: 400px; text-align:left; color : black;" v-if="!isWrite">
+<div class="totalContainer">
+    <sidebar-menu :menu="menu" @item-click="onItemClick" :relative="true" :collapsed="isMobile" style="float:left; z-index:1; width:25%; margin-top : 1%; margin-right:5%;" class="sidebar"/>
+    <div style="height:7vh;"></div>
+    <div style="text-align:left; color : black;" v-if="!isWrite">
       <h1 style="padding-top : 20px; ">{{ title }}</h1>
       <div style="margin-bottom: 20px;">
       <i class="fas fa-calendar-alt"></i> <span style="margin-left : 5px;">{{ createdDate }}</span>
@@ -57,7 +58,7 @@
                       <v-icon left bottom>mdi-cancel</v-icon> 취소
                   </v-btn>
                 </div>
-                <div v-if="(role==admin||item.uid==uid)&&!item.editstate">
+                <div v-if="(role=='ADMIN'||item.uid==uid)&&!item.editstate">
                   <v-btn icon color="green" @click="item.editstate = true">
                     <v-icon>mdi-pencil</v-icon>
                   </v-btn>
@@ -216,8 +217,27 @@ name:'Blog',
             required: true
         }
     },
+    updated() {
+       if(sessionStorage.getItem('role')!=null){
+            this.role=sessionStorage.getItem('role')
+        }
+        if(sessionStorage.getItem('userID')!=null){
+            this.uid=sessionStorage.getItem('userID')
+        }
+    },
     mounted() {
       window.scrollTo(0,0);
+      var filter = "win16|win32|win64|mac|macintel"; 
+        if ( navigator.platform ) {
+          if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) {
+            //mobile
+            this.isMobile=true;
+          }
+          else { 
+            //pc
+          
+          }
+        }
         if(sessionStorage.getItem('role')!=null){
             this.role=sessionStorage.getItem('role')
         }
@@ -317,6 +337,7 @@ name:'Blog',
     },
     data() {
             return {
+                isMobile:false,
                 role :'guest',
                 subCategoryID:0,
                 fab: false,
@@ -474,6 +495,13 @@ name:'Blog',
 </script>
 
 <style>
+html, body, .totalContainer{
+  height: 100%;
+}
+
+.sidebar{
+  height: 100%;
+}
 html, body {
 
     margin: 0;

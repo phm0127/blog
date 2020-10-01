@@ -1,30 +1,29 @@
 <template>
   <div>
-      <div style="height:30px;">
+      <div style="height:7vh;"></div>
+        <div v-for="board of boardlist" v-bind:key=board.id>
+                <div style="text-align:left; color : black;  margin-bottom : 10%; width: 100%; " class="viewer" @click="readBoard(board.id)">
+                    <div class="board" style="position:relative">
 
-      </div>
-      <div v-for="board of boardlist" v-bind:key=board.id>
-            <div style="padding-left: 400px; text-align:left; color : black; margin-bottom : 50px; width: 80%; " class="viewer" @click="readBoard(board.id)">
-                <div class="board" style="position:relative">
-
-                <h1 style="padding-top : 20px; ">{{ board.title }}</h1>
-                <div style="margin-bottom: 20px;">
-                    <i class="fas fa-calendar-alt"></i> <span style="margin-left : 5px;">{{ board.createdDate.substring(0,4)+"년 "+board.createdDate.substring(5,7)+"월 "+board.createdDate.substring(8,10)+"일" }}</span>
-                </div>
-            
-                <viewer 
-               
-                v-if="board.content != null"
-                :initialValue="board.content"
-                height="10em"
-                initialEditType="markdown"
-                previewStyle="vertical"
-                style="text-align:left; height: 10em; overflow:hidden;"
-                />
-                </div>
+                    <h1 style="padding-top : 20px; ">{{ board.title }}</h1>
+                    <div style="margin-bottom: 20px;">
+                        <i class="fas fa-calendar-alt"></i> <span style="margin-left : 5px;">{{ board.createdDate.substring(0,4)+"년 "+board.createdDate.substring(5,7)+"월 "+board.createdDate.substring(8,10)+"일" }}</span>
+                    </div>
                 
-            </div>
-      </div>
+                    <viewer 
+                
+                    v-if="board.content != null"
+                    :initialValue="board.content"
+                    height="10em"
+                    initialEditType="markdown"
+                    previewStyle="vertical"
+                    style="text-align:left; height: 10em; overflow:hidden;"
+                    />
+                    </div>
+                    
+                </div>
+        </div>
+      
       <v-pagination
       v-model="page"
       :length="totalpage"

@@ -1,8 +1,12 @@
 <template>
-<div>
-    <sidebar-menu :menu="menu" @item-click="onItemClick" :relative="true" style="float:left; height:170vh; z-index:1;"   />
-    <board-list v-if="!isWrite" :type="0" v-bind:subCategoryID="subCategoryID" />
-    <write-form v-if="isWrite" style="text-align:left;" :type="0" />
+<div class="totalContainer">
+      <sidebar-menu :menu="menu" @item-click="onItemClick" :relative="true" :collapsed="isMobile" style="float:left; height:100%; z-index:1; width:25%; margin-top : 1%; " class="sidebar"/>
+    
+    
+    <div style="margin-left:3%; position:relative; float:left; width: 70%">
+      <board-list v-if="!isWrite" :type="0" v-bind:subCategoryID="subCategoryID"/>
+      <write-form v-if="isWrite" style="text-align:left;" :type="0" />
+    </div>
    
     <v-speed-dial
         v-model="fab"
@@ -83,6 +87,17 @@ name:'Portfolio',
     },
     mounted() {
         window.scrollTo(0,0);
+        var filter = "win16|win32|win64|mac|macintel"; 
+        if ( navigator.platform ) {
+          if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) {
+            //mobile
+            this.isMobile=true;
+          }
+          else { 
+            //pc
+          
+          }
+        }
       
         if(sessionStorage.getItem('role')!=null){
             this.role=sessionStorage.getItem('role')
@@ -119,6 +134,7 @@ name:'Portfolio',
     },
     data() {
             return {
+                isMobile:false,
                 role :'guest',
                 isWrite: false,
                 pageIndex:0,
@@ -203,6 +219,13 @@ name:'Portfolio',
 </script>
 
 <style>
+html, body, .totalContainer{
+  height: 100%;
+}
+
+.sidebar{
+  height: 100%;
+}
 html, body {
 
     margin: 0;

@@ -2,15 +2,15 @@
 <v-app>
 <v-top-naviation>
   <navbar/>
-  <div style='float:right; z-index:3; width: 150px; margin-top:10px;'>
-        <div style="position:fixed; z-index:3; padding: 10px 20px;" v-if=!this.$store.state.isLogin><a v-on:click="modal_rendar()" style="padding: 0.6em 2em;
-        font-size: 20px; color:white;" >Login</a></div>
+  <div style='float:right; z-index:3; width: 15vh; margin-top:0.5vh; text-align=center;'>
+        <div style="position:fixed; z-index:3; padding: 1vh auto;" v-if=!this.$store.state.isLogin><a v-on:click="modal_rendar()" style="padding: 0.6em 2em;
+        font-size: 2vh; color:white;" >Login</a></div>
         
         <div style="position:fixed; z-index:3; padding: 10px 20px;"  v-if=this.$store.state.isLogin>
-          <a v-on:click="logout()" style="padding: 0.6em 2em; font-size: 20px; color:white;">Logout</a>
+          <a v-on:click="logout()" style="padding: 0.6em 2em; font-size: 2vh; color:white;">Logout</a>
         </div>
     </div>
-  <div style="height : 4em;"></div>
+  
 </v-top-naviation>
       
       <modals-container />
@@ -46,7 +46,8 @@ export default {
     if ( navigator.platform ) {
         if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) {
           //mobile
-          this.$router.push({name:'Error',query:{msg:'현재, 모바일 환경은 지원하지 않습니다.'}})
+          
+          //this.$router.push({name:'Error',query:{msg:'현재, 모바일 환경은 지원하지 않습니다.'}})
         }
         else { 
           //pc
@@ -74,6 +75,7 @@ export default {
     },
     logout(){
       this.isLogin=false;
+      sessionStorage.removeItem("userID")
       sessionStorage.removeItem("email")
       sessionStorage.removeItem("name")
       sessionStorage.removeItem("nickname")

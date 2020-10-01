@@ -89,8 +89,8 @@ $(".nav .slide1").css({ left: +current.left, width: currentWidth });
   }
     a {
         position: relative;
-        padding: 0.6em 2em;
-        font-size: 20px;
+        padding: 0.6vh 2vw;
+        font-size: 2vh;
         border: none;
         outline: none;
         color: #ffffff;
