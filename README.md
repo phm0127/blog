@@ -1,5 +1,5 @@
 # Blog
-It's running on [Blog](http://1000min.kr)
+It's running on [Blog](http://www.1000min.kr)
 
 ## Overview
 > In Portfoilo tab, You can create/read/update/delete a portfoilo.  
