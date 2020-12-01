@@ -7,7 +7,7 @@
         </div>
             <NaverLogin
             client-id="RnP9opRdc0Dm21kuldCI"
-            callback-url="http://www.1000min.kr/agreement"
+            callback-url="https://www.1000min.kr/agreement"
             v-bind:is-popup="false"
             v-bind:button-type="3"
             v-bind:button-height="50"
@@ -43,7 +43,7 @@ let callbackFunction = (status) => {
       NaverLogin.reprompt();
       return;
     }
-    window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/1000min");
+    window.location.replace("https://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/1000min");
   } else {
     console.log("callback 처리에 실패하였습니다.");
   }
@@ -53,7 +53,7 @@ let callbackFunction = (status) => {
 export default {
     data() {
         return {
-             naverLoginURL: 'https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=6yYgEm5_qFsTYNEyzwaO&redirect_uri=http://www.1000min.kr:8080/user/signin/naver/access&state=20200708',
+             naverLoginURL: 'https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=6yYgEm5_qFsTYNEyzwaO&redirect_uri='+this.$store.state.backAddr+'/user/signin/naver/access&state=20200708',
         }
     },
     components:{
@@ -71,7 +71,7 @@ export default {
        },
        getuser(){
         this.$emit('close')
-           axios.get('http://www.1000min.kr:8080/user/getuser',{
+           axios.get(this.$store.state.backAddr+'/user/getuser',{
             // headers:{
             //     'jwt-auth-token':this.$store.state.token
             // },
@@ -89,7 +89,7 @@ export default {
        },
        logout(){
         this.$emit('close')
-           axios.get('http://www.1000min.kr:8080/user/logout',{
+           axios.get(this.$store.state.backAddr+'/user/logout',{
             headers:{
                 "token":this.$store.state.authToken,
                  Authorization:this.token

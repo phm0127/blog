@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" style="background-color:#f8f8f8">
     <div class="typing-demo">
       Hello, <span style="color:#4587f4;">W</span><span style="color:#ea4436;">o</span><span style="color:#fbbc05;">r</span><span style="color:#4587f4;">l</span><span style="color:#34a853;">d</span><span style="color:#ea4436;">!</span>
     </div>

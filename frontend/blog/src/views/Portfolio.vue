@@ -102,8 +102,8 @@ name:'Portfolio',
         if(sessionStorage.getItem('role')!=null){
             this.role=sessionStorage.getItem('role')
         }
-
-        axios.get('http://www.1000min.kr:8080/board/maincategory',{
+        
+        axios.get(this.$store.state.backAddr+'/board/maincategory',{
             params:{
                 key:0
             }

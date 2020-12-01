@@ -17,7 +17,7 @@ export default {
 
     axios({
       method: 'post',
-      url : 'http://www.1000min.kr:8080/user/naverlogin',
+      url : this.$store.state.backAddr+'/user/naverlogin',
       data : {
         token
         //Authorization : 'Bearer ' + token

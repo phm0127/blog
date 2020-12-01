@@ -248,7 +248,7 @@ name:'Portfolio',
         }
         
 
-        axios.get('http://www.1000min.kr:8080/board/board',{
+        axios.get(this.$store.state.backAddr+'/board/board',{
             params:{
               
                 boardID:Number(this.boardID)
@@ -266,7 +266,7 @@ name:'Portfolio',
         
 
         
-        axios.get('http://www.1000min.kr:8080/board/maincategory',{
+        axios.get(this.$store.state.backAddr+'/board/maincategory',{
             params:{
                 key:0
             }
@@ -293,7 +293,7 @@ name:'Portfolio',
             
         })
 
-        axios.get('http://www.1000min.kr:8080/board/comment',{
+        axios.get(this.$store.state.backAddr+'/board/comment',{
           params:{
             boardId:Number(this.boardID)
           }
@@ -447,7 +447,7 @@ name:'Portfolio',
         }
         this.adding=true
         
-        axios.post('http://www.1000min.kr:8080/board/comment',{
+        axios.post(this.$store.state.backAddr+'/board/comment',{
           userId:sessionStorage.getItem("userID"),
           boardId:Number(this.boardID),
           comment:this.comment
@@ -463,7 +463,7 @@ name:'Portfolio',
       },
 
       editcomment(id,comment){
-        axios.post('http://www.1000min.kr:8080/board/editcomment',{
+        axios.post(this.$store.state.backAddr+'/board/editcomment',{
           commentId: id,
           boardId:Number(this.boardID),
           comment : comment
@@ -479,7 +479,7 @@ name:'Portfolio',
       deleteComment(cid){
         
         this.deletedialog=false
-        axios.get('http://www.1000min.kr:8080/board/deletecomment',{
+        axios.get(this.$store.state.backAddr+'/board/deletecomment',{
           params:{
             boardId:Number(this.boardID),
             commentId:cid

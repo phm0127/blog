@@ -11,8 +11,8 @@ export default new Vuex.Store({
         createPersistedState()
     ],
     state:{
-        backaddr: 'localhost:8080',
-        frontaddr : 'localhost',
+        backAddr: 'https://1000min.kr/api',
+        frontAddr : 'https://1000min.kr',
         page:'/',
         pageIndex:1,
         token:'',

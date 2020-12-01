@@ -59,7 +59,7 @@ export default {
     mounted() {
         window.scrollTo(0,0);
         if(this.subCategoryID<=0||this.subCategoryID==null){
-            axios.get('http://www.1000min.kr:8080/board/allboardlist',{
+            axios.get(this.$store.state.backAddr+'/board/allboardlist',{
                 params:{
                     key:this.type,
                     pageIndex:this.pageIndex
@@ -81,7 +81,7 @@ export default {
 
         }
         else{
-            axios.get('http://www.1000min.kr:8080/board/boardlist',{
+            axios.get(this.$store.state.backAddr+'/board/boardlist',{
                 params:{
                     subCategoryID:this.subCategoryID,
                     pageIndex:this.pageIndex
@@ -119,7 +119,7 @@ export default {
         page(newVal){
         window.scrollTo(0,0);
         if(this.subCategoryID<=0||this.subCategoryID==null){
-            axios.get('http://www.1000min.kr:8080/board/allboardlist',{
+            axios.get(this.$store.state.backAddr+'/board/allboardlist',{
                 params:{
                     key:this.type,
                     pageIndex:newVal-1
@@ -142,7 +142,7 @@ export default {
 
         }
         else{
-            axios.get('http://www.1000min.kr:8080/board/boardlist',{
+            axios.get(this.$store.state.backAddr+'/board/boardlist',{
                 params:{
                     subCategoryID:this.subCategoryID,
                     pageIndex:newVal-1

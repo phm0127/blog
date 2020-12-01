@@ -131,7 +131,7 @@ export default {
         }
     },
     mounted() {
-        axios.get('http://www.1000min.kr:8080/board/maincategory',{
+        axios.get(this.$store.state.backAddr+'/board/maincategory',{
             params:{
                 key:this.type
             }
@@ -149,7 +149,7 @@ export default {
     },
     methods:{
         write: function(){
-          axios.post('http://www.1000min.kr:8080/board/board',{
+          axios.post(this.$store.state.backAddr+'/board/board',{
             type:this.type,
             title:this.title,
             content:this.$refs.toastuiEditor.invoke("getMarkdown"),
@@ -164,7 +164,7 @@ export default {
     },
      watch:{
         selected : function (newVal) {
-          axios.get('http://www.1000min.kr:8080/board/subcategory',{
+          axios.get(this.$store.state.backAddr+'/board/subcategory',{
             params:{
                 mainCategoryID:newVal
             }

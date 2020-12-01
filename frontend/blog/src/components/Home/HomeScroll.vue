@@ -25,7 +25,7 @@
               
             <div class="image-container left" data-aos="fade-left" data-aos-delay="50" data-aos-duration="1500" data-aos-easing="ease-in">
                 <div class="image-container left">
-                    <img src ="http://www.1000min.kr/image/profile.jpg" alt="profile">
+                    <img src ="https://www.1000min.kr/image/profile.jpg" alt="profile">
                     
                 </div>
                 
@@ -34,7 +34,7 @@
                 
              
             <div class="image-container right " data-aos="fade-right" data-aos-delay="100" data-aos-duration="1500" data-aos-easing="ease-in">
-                <img src="http://www.1000min.kr/image/coding.jpg" alt="umbrella">
+                <img src="https://www.1000min.kr/image/coding.jpg" alt="umbrella">
             </div>
            
         </div>
@@ -42,15 +42,16 @@
     </section>
     <div style="position: relative;" data-aos="fade-center" data-aos-delay="150" data-aos-duration="1500" data-aos-easing="ease-in">
                     <p style="text-align:center;">
-                        <span style="font-size : 3.5vw; padding-right:3%;">"안녕하세요. 웹 개발자를 꿈꾸는 박형민입니다."</span>
+                        <span style="font-size : 2.5em; padding-right:3%;">"안녕하세요. 웹 개발자를 꿈꾸는 박형민입니다."</span>
                         <br><br><br><br><br>
                     </p>
     </div>
     <div style="position: relative;" data-aos="fade-center" data-aos-delay="150" data-aos-duration="1500" data-aos-easing="ease-in">
                     <p style="text-align:center; width:80%; margin : 0 auto;">
-                        <span style="font-size : 2vw;">저는 웹개발자가 되기 위해 소프트웨어를 공부하고 있습니다. 많이 부족하지만 부족한만큼 더 열심히 공부하려 합니다.</span>
+                        <span style="font-size : 1.4em;">저는 웹개발자가 되기 위해 소프트웨어를 공부하고 있습니다. 많이 부족하지만 부족한만큼 더 열심히 공부하려 합니다.</span>
                         <br>
-                        <span style="font-size : 2vw;">현재는 삼성 청년 소프트웨어 아카데미에서 공부하고 있으며 스프링을 사용한 백엔드 개발쪽을 공부하고 있습니다.</span>
+                        <br>
+                        <span style="font-size : 1.4em;">현재는 삼성 청년 소프트웨어 아카데미에서 공부하고 있으며 스프링을 사용한 백엔드 개발쪽을 공부하고 있습니다.</span>
                         <br>
                         <br><br><br><br><br><br><br><br><br><br>
                     </p>
@@ -62,26 +63,27 @@
         <div class="zoom ">
             <div class="image-container left" data-aos="zoom-in-left" data-aos-delay="50" data-aos-duration="1500"
                 data-aos-easing="ease-in">
-                <img src="http://www.1000min.kr/image/ku.jfif" alt="breaking bad">
+                <img src="https://www.1000min.kr/image/ku.jfif" alt="breaking bad">
             </div>
             <div class="image-container right " data-aos="zoom-in-right" data-aos-delay="100" data-aos-duration="1500"
                 data-aos-easing="ease-in">
-                <img src="http://www.1000min.kr/image/ku.jpg" alt="Mind Hunter">
+                <img src="https://www.1000min.kr/image/ku.jpg" alt="Mind Hunter">
             </div>
         </div>
     
     </section>
     <div style="position: relative;" data-aos="fade-center" data-aos-delay="150" data-aos-duration="1500" data-aos-easing="ease-in">
                     <p style="text-align:center;">
-                        <span style="font-size : 3.5vw; padding-right:3%;">"개발자로의 첫 걸음"</span>
+                        <span style="font-size : 2.5em; padding-right:3%;">"개발자로의 첫 걸음"</span>
                         <br><br><br><br><br>
                     </p>
     </div>
     <div style="position: relative;" data-aos="fade-center" data-aos-delay="150" data-aos-duration="1500" data-aos-easing="ease-in">
                     <p style="text-align:center;  width:80%; margin : 0 auto;">
-                        <span style="font-size : 2vw;">2013년, 건국대학교 컴퓨터공학과에 입학하여 처음 프로그래밍을 접했습니다.</span>
+                        <span style="font-size : 1.4em;">2013년, 건국대학교 컴퓨터공학과에 입학하여 처음 프로그래밍을 접했습니다.</span>
                         <br>
-                        <span style="font-size : 2vw;">2014년, 임베디드 소프트웨어 공모전에 나가 AR을 이용한 IoT 서비스를 구축하였습니다.</span>
+                        <br>
+                        <span style="font-size : 1.4em;">2014년, 임베디드 소프트웨어 공모전에 나가 AR을 이용한 IoT 서비스를 구축하였습니다.</span>
                         <br>
                         <br><br><br><br><br><br><br><br><br><br>
                     </p>
@@ -93,27 +95,28 @@
         <div class="flip ">
             <div class="image-container left" data-aos="flip-left" data-aos-delay="50" data-aos-duration="1500"
                 data-aos-easing="ease-in">
-                <img src="http://www.1000min.kr/image/ssafy1.jpg" alt="brooklyn nine nine">
+                <img src="https://www.1000min.kr/image/ssafy1.jpg" alt="brooklyn nine nine">
             </div>
            
             <div class="image-container right " data-aos="flip-right" data-aos-delay="100" data-aos-duration="1500"
                 data-aos-easing="ease-in">
-                <img src="http://www.1000min.kr/image/ssafy2.jpg" alt="one-day-at-a-time">
+                <img src="https://www.1000min.kr/image/ssafy2.jpg" alt="one-day-at-a-time">
             </div>
         </div>
     
     </section>
     <div style="position: relative;" data-aos="fade-center" data-aos-delay="150" data-aos-duration="1500" data-aos-easing="ease-in">
                     <p style="text-align:center; ">
-                        <span style="font-size : 3vw; padding-right:3%;">"더 배울 수 있는 기회"</span>
+                        <span style="font-size : 2.5em; padding-right:3%;">"더 배울 수 있는 기회"</span>
                         <br><br><br><br><br>
                     </p>
     </div>
     <div style="position: relative;" data-aos="fade-center" data-aos-delay="150" data-aos-duration="1500" data-aos-easing="ease-in">
                     <p style="text-align:center;  width:80%; margin : 0 auto;">
-                        <span style="font-size : 2vw;">졸업 직후, 삼성 청년 소프트웨어 아카데미에 합격하여 웹 트랙을 공부하였습니다.</span>
+                        <span style="font-size : 1.4em;">졸업 직후, 삼성 청년 소프트웨어 아카데미에 합격하여 웹 트랙을 공부하였습니다.</span>
                         <br>
-                        <span style="font-size : 2vw;">Java와 알고리즘, Database, Spring, Vue 등을 배웠고 이를 이용한 여러 프로젝트를 진행했습니다.</span>
+                        <br>
+                        <span style="font-size : 1.4em;">Java와 알고리즘, Database, Spring, Vue 등을 배웠고 이를 이용한 여러 프로젝트를 진행했습니다.</span>
                         <br>
                         <br><br><br><br><br><br><br><br><br><br>
                     </p>
@@ -125,31 +128,66 @@
         <div class="scroll-right-left ">
             <div class="image-container left" data-aos="fade-left" data-aos-delay="50" data-aos-duration="1500"
                 data-aos-easing="ease-in">
-                <img src="http://www.1000min.kr/image/aptproject1.jpg" alt="Killing eve">
+                <img src="https://www.1000min.kr/image/aptproject1.jpg" alt="Killing eve">
             </div>
     
             <div class="image-container right" style="height:500px;" data-aos="fade-right" data-aos-delay="100" data-aos-duration="1500"
                 data-aos-easing="ease-in">
-                <img src="http://www.1000min.kr/image/sns.png" alt="Elite">
+                <img src="https://www.1000min.kr/image/sns.png" alt="Elite">
             </div>
         </div>
     
     </section>
      <div style="position: relative;" data-aos="fade-center" data-aos-delay="150" data-aos-duration="1500" data-aos-easing="ease-in">
                     <p style="text-align:center;">
-                        <span style="font-size : 3vw; padding-right:3%;">"첫 웹 프로젝트"</span>
+                        <span style="font-size : 2.5em; padding-right:3%;">"첫 웹 프로젝트"</span>
                         <br><br><br><br><br>
                     </p>
     </div>
     <div style="position: relative;" data-aos="fade-center" data-aos-delay="150" data-aos-duration="1500" data-aos-easing="ease-in">
                     <p style="text-align:center;  width:80%; margin : 0 auto;">
-                        <span style="font-size : 2vw;">Spring과 html, javascript, css를 이용해서 서울특별시 아파트 거래내역 서비스 웹 어플리케이션 풀스택을 구현하였습니다.</span>
+                        <span style="font-size : 1.4em;">Spring과 html, javascript, css를 이용해서 서울특별시 아파트 거래내역 서비스 웹 어플리케이션 풀스택을 구현하였습니다.</span>
                         <br>
-                        <span style="font-size : 2vw;">Spring를 사용하여 모바일용 '스터디 기반 sns' 웹 어플리케이션 프로젝트의 백엔드를 구현하였고 인프라를 구축했습니다.</span>
+                        <br>
+                        <span style="font-size : 1.4em;">Spring를 사용하여 모바일용 '스터디 기반 sns' 웹 어플리케이션 프로젝트의 백엔드를 구현하였고 인프라를 구축했습니다.</span>
                         <br>
                         <br><br><br><br><br><br><br><br><br><br>
                     </p>
     </div>
+    <section class="scroll">
+        <div class="genre">
+            <h3>Present</h3>
+        </div>
+        <div class="zoom ">
+            <div class="image-container left" data-aos="zoom-in-up" data-aos-delay="50" data-aos-duration="1500"
+                data-aos-easing="ease-in">
+                <img src="http://localhost/image/naver1.jpg" alt="demon slayer">
+                <!-- <img src="https://www.1000min.kr/image/naver1.jpg" alt="fma"> -->
+            </div>
+            <div class="image-container right " data-aos="zoom-in-down" data-aos-delay="100" data-aos-duration="1500"
+                data-aos-easing="ease-in">
+                <img src="http://localhost/image/naver2.jpg" alt="demon slayer">
+                <!-- <img src="https://www.1000min.kr/image/naver2.jpg" alt="demon slayer"> -->
+            </div>
+        </div>
+    </section>
+     <div style="position: relative;" data-aos="fade-center" data-aos-delay="150" data-aos-duration="1500" data-aos-easing="ease-in">
+                    <p style="text-align:center;">
+                        <span style="font-size : 2.5em; padding-right:3%;">"앞으로 Naver에서 Web Developer로 근무할 예정입니다."</span>
+                        <br><br><br><br><br>
+                    </p>
+    </div>
+    <div style="position: relative;" data-aos="fade-center" data-aos-delay="150" data-aos-duration="1500" data-aos-easing="ease-in">
+                    <p style="text-align:center;  width:80%; margin : 0 auto;">
+                        <span style="font-size : 1.4em;">네이버에서 웹 개발자로 근무할 예정입니다. </span>
+                        <br>
+                        <br>
+                        <span style="font-size : 1.4em;">아직은 공란!</span>
+                        <br>
+                        <br><br><br><br><br><br><br><br><br><br>
+                    </p>
+    </div>
+
     <section class="scroll">
         <div class="genre">
             <h3>Toy Project</h3>
@@ -157,25 +195,26 @@
         <div class="zoom ">
             <div class="image-container left" data-aos="zoom-in-up" data-aos-delay="50" data-aos-duration="1500"
                 data-aos-easing="ease-in">
-                <img src="http://www.1000min.kr/image/toy.jpg" alt="fma">
+                <img src="https://www.1000min.kr/image/toy.jpg" alt="fma">
             </div>
             <div class="image-container right " data-aos="zoom-in-down" data-aos-delay="100" data-aos-duration="1500"
                 data-aos-easing="ease-in">
-                <img src="http://www.1000min.kr/image/test.jpg" alt="demon slayer">
+                <img src="https://www.1000min.kr/image/test.jpg" alt="demon slayer">
             </div>
         </div>
     </section>
      <div style="position: relative;" data-aos="fade-center" data-aos-delay="150" data-aos-duration="1500" data-aos-easing="ease-in">
                     <p style="text-align:center;">
-                        <span style="font-size : 3vw; padding-right:3%;">"틈틈히 한 토이 프로젝트"</span>
+                        <span style="font-size : 2.5em; padding-right:3%;">"틈틈히 한 토이 프로젝트"</span>
                         <br><br><br><br><br>
                     </p>
     </div>
     <div style="position: relative;" data-aos="fade-center" data-aos-delay="150" data-aos-duration="1500" data-aos-easing="ease-in">
                     <p style="text-align:center;  width:80%; margin : 0 auto;">
-                        <span style="font-size : 2vw;">텔레스트레이션이라는 보드 게임을 한 뒤, 재미있어서 온라인상으로 할 수는 없을까 하고 시작한 토이프로젝트이며 아직 미완성 단계입니다. </span>
+                        <span style="font-size : 1.4em;">텔레스트레이션이라는 보드 게임을 한 뒤, 재미있어서 온라인상으로 할 수는 없을까 하고 시작한 토이프로젝트이며 아직 미완성 단계입니다. </span>
                         <br>
-                        <span style="font-size : 2vw;">또, 지금 보고 계신 이 블로그입니다.</span>
+                        <br>
+                        <span style="font-size : 1.4em;">또, 지금 보고 계신 이 블로그입니다. 아직 부족하지만 계속 개발해 나갈 계획입니다.</span>
                         <br>
                         <br><br><br><br><br><br><br><br><br><br>
                     </p>
