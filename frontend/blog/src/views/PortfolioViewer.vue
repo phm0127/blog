@@ -121,7 +121,7 @@
           counter="1000"
           label="댓글 달기"
           outlined
-          style="margin-top:50px; width:100%;"
+          style="margin-top:50px; width:70%;"
           
         ></v-textarea>
         <v-btn class="ma-2" tile outlined color="success" style="float:right;" @click.stop="addComment" :disabled="adding">

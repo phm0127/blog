@@ -161,13 +161,11 @@
         <div class="zoom ">
             <div class="image-container left" data-aos="zoom-in-up" data-aos-delay="50" data-aos-duration="1500"
                 data-aos-easing="ease-in">
-                <img src="http://localhost/image/naver1.jpg" alt="demon slayer">
-                <!-- <img src="https://www.1000min.kr/image/naver1.jpg" alt="fma"> -->
+                <img src="https://www.1000min.kr/image/naver1.jpg" alt="fma">
             </div>
             <div class="image-container right " data-aos="zoom-in-down" data-aos-delay="100" data-aos-duration="1500"
                 data-aos-easing="ease-in">
-                <img src="http://localhost/image/naver2.jpg" alt="demon slayer">
-                <!-- <img src="https://www.1000min.kr/image/naver2.jpg" alt="demon slayer"> -->
+                <img src="https://www.1000min.kr/image/naver2.jpg" alt="demon slayer">
             </div>
         </div>
     </section>
