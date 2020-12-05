@@ -438,7 +438,7 @@ name:'Portfolio',
                         name: 'dynamic-modal',
                         width : '330px',
                         height : '500px',
-                        draggable: true,
+                        draggable: false,
             })
       },
       addComment(){
