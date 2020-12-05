@@ -12,11 +12,11 @@
     <br> Kakao/Tim Aeom
     <br> Naver/Sejin
     <br> SSAFY/sooya12
-    <br> SSAFY/Chayeong
+    <br> SSAFY/Chaeyeong
     <br>[06:24:55] Started <span class="pink1">'2020-08-28'</span>, after deploy <span class="blue1">? </span> Would you like to continue this project? <span class="orange1">Yes</span>
     <br> [06:25:14] Forwards <span class="blue1">1000</span> steps, <span class="blue1">1000</span> passes, <span class="blue1">0</span> failures: <span class="pink1">SUCCESS </span>
     <br>
-    <p class="typewriter"> root@1000min sudo <span class="pink1"> Thanks to Tim, Sejin, sooya, Chayeong</span> again</p>
+    <p class="typewriter"> root@1000min sudo <span class="pink1"> Thanks to Tim, Sejin, sooya, Chaeyeong</span> again</p>
     
   </div>
     </div>
