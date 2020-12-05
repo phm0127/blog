@@ -351,9 +351,9 @@ public class BoardController {
             if(comment.get().getBoard().getType()==BoardType.PORTFOLIO){
                 url=FRONT_URL+"/portfolio/"+comment.get().getBoard().getId();
             }else {
-                url=FRONT_URL+"/board/"+comment.get().getBoard().getId();
+                url=FRONT_URL+"/blog/"+comment.get().getBoard().getId();
             }
-            mailSender.sendNotification(adminEmail,comment.get().getBoard().getTitle(),url,comment.get().getUser().getNickname(),comment.get().getContents());
+            mailSender.sendEditNotification(adminEmail,comment.get().getBoard().getTitle(),url,comment.get().getUser().getNickname(),comment.get().getContents());
         }
 
         response.status=true;
