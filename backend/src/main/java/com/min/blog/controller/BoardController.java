@@ -11,6 +11,7 @@ import com.min.blog.service.UserService;
 import com.min.blog.util.MailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -154,10 +155,10 @@ public class BoardController {
 
         //int pageIndex = (Integer)map.getOrDefault("pageIndex",0);
 
-        PageRequest pageRequest = PageRequest.of(pageIndex,5);
+        PageRequest pageRequest = PageRequest.of(pageIndex,5,Sort.by("createdDate").descending());
         BoardListDTO boardListDTO = new BoardListDTO();
         boardListDTO.setPageIndex(pageIndex);
-        boardListDTO.setTotalPage(boardRepository.findAllByType(type,pageRequest).stream().count());
+        boardListDTO.setTotalPage(boardRepository.findAllByType(type).stream().count());
         boardListDTO.setBoards(boardRepository.findAllByType(type,pageRequest).stream().sorted(Comparator.comparing(BaseTimeEntity::getCreatedDate).reversed()).collect(Collectors.toList()));
 
         response.status=true;
@@ -177,10 +178,10 @@ public class BoardController {
             response.data="서브카테고리 정보 없음";
             return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
         }
-        PageRequest pageRequest = PageRequest.of(pageIndex,5);
+        PageRequest pageRequest = PageRequest.of(pageIndex,5,Sort.by("createdDate").descending());
         BoardListDTO boardListDTO = new BoardListDTO();
         boardListDTO.setPageIndex(pageIndex);
-        boardListDTO.setTotalPage(boardRepository.findAllBySubCategory(subCategory.get(), pageRequest).getTotalElements());
+        boardListDTO.setTotalPage(boardRepository.findAllBySubCategory(subCategory.get()).stream().count());
         boardListDTO.setBoards(boardRepository.findAllBySubCategory(subCategory.get(), pageRequest).stream().sorted(Comparator.comparing(BaseTimeEntity::getCreatedDate).reversed()).collect(Collectors.toList()));
 
         response.status=true;
