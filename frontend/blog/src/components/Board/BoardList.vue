@@ -89,7 +89,7 @@ export default {
                 })
                 .then(res => {
                    this.boardlist=res.data.object.boards
-                   
+                  
                    if((res.data.object.totalPage-1)>=0){
                        this.totalpage=Math.floor((res.data.object.totalPage-1)/5)+1
                    }else{
