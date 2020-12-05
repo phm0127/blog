@@ -177,7 +177,7 @@ public class BoardController {
             response.data="서브카테고리 정보 없음";
             return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
         }
-        PageRequest pageRequest = PageRequest.of(pageIndex,10);
+        PageRequest pageRequest = PageRequest.of(pageIndex,5);
         BoardListDTO boardListDTO = new BoardListDTO();
         boardListDTO.setPageIndex(pageIndex);
         boardListDTO.setTotalPage(boardRepository.findAllBySubCategory(subCategory.get(), pageRequest).getTotalElements());
