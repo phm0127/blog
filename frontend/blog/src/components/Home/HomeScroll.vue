@@ -51,7 +51,7 @@
                         <span style="font-size : 1.4em;">저는 웹개발자가 되기 위해 소프트웨어를 공부하고 있습니다. 많이 부족하지만 부족한만큼 더 열심히 공부하려 합니다.</span>
                         <br>
                         <br>
-                        <span style="font-size : 1.4em;">현재는 삼성 청년 소프트웨어 아카데미에서 공부하고 있으며 스프링을 사용한 백엔드 개발쪽을 공부하고 있습니다.</span>
+                        <span style="font-size : 1.4em;">현재는 <span style="color:#00DC7A">네이버 클라우드</span>에서 백엔드 엔지니어로 근무하고 있습니다.</span>
                         <br>
                         <br><br><br><br><br><br><br><br><br><br>
                     </p>
@@ -171,16 +171,16 @@
     </section>
      <div style="position: relative;" data-aos="fade-center" data-aos-delay="150" data-aos-duration="1500" data-aos-easing="ease-in">
                     <p style="text-align:center;">
-                        <span style="font-size : 2.5em; padding-right:3%;">"앞으로 Naver에서 Web Developer로 근무할 예정입니다."</span>
+                        <span style="font-size : 2.5em; padding-right:3%;">"네이버 클라우드에서 백엔드 엔지니어로 근무하고있습니다."</span>
                         <br><br><br><br><br>
                     </p>
     </div>
     <div style="position: relative;" data-aos="fade-center" data-aos-delay="150" data-aos-duration="1500" data-aos-easing="ease-in">
                     <p style="text-align:center;  width:80%; margin : 0 auto;">
-                        <span style="font-size : 1.4em;">네이버에서 웹 개발자로 근무할 예정입니다. </span>
+                        <span style="font-size : 1.4em;">   </span>
                         <br>
                         <br>
-                        <span style="font-size : 1.4em;">아직은 공란!</span>
+                        <span style="font-size : 1.4em;">   </span>
                         <br>
                         <br><br><br><br><br><br><br><br><br><br>
                     </p>
@@ -215,6 +215,12 @@
                         <span style="font-size : 1.4em;">또, 지금 보고 계신 이 블로그입니다. 아직 부족하지만 계속 개발해 나갈 계획입니다.</span>
                         <br>
                         <br><br><br><br><br><br><br><br><br><br>
+                    </p>
+    </div>
+    <div style="position: relative;" data-aos="fade-center" data-aos-delay="150" data-aos-duration="1500" data-aos-easing="ease-in">
+                    <p style="text-align:center;">
+                        <span style="font-size : 2.5em; padding-right:3%;">"이외 프로젝트들은 <a href="https://www.1000min.kr/portfolio">포트폴리오</a>에서 확인해주세요!"</span>
+                        <br><br><br><br><br>
                     </p>
     </div>
 </body>
