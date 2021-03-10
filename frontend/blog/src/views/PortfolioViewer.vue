@@ -13,6 +13,7 @@
       :initialValue="viewerText"
       height="91vh"
       initialEditType="markdown"
+      :options="editorOptions"
       previewStyle="vertical"
       style="text-align:left;"
       />
@@ -206,6 +207,52 @@ import { Viewer } from '@toast-ui/vue-editor';
 import EditForm from '../components/Board/EditForm.vue'
 import LoginModal from '@/components/LoginModal.vue'
 
+
+import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
+import 'highlight.js/styles/github.css';
+import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
+
+//
+// Step 1. Import highlight.js
+import hljs from 'highlight.js/lib/highlight';
+ 
+// Step 2. Import language files of highlight.js that you need
+import javascript from 'highlight.js/lib/languages/javascript';
+import clojure from 'highlight.js/lib/languages/clojure';
+import java from 'highlight.js/lib/languages/java';
+import bash from 'highlight.js/lib/languages/bash';
+import dockerfile from 'highlight.js/lib/languages/dockerfile';
+import json from 'highlight.js/lib/languages/json';
+import markdown from 'highlight.js/lib/languages/markdown';
+import properties from 'highlight.js/lib/languages/properties';
+import shell from 'highlight.js/lib/languages/shell';
+import sql from 'highlight.js/lib/languages/sql';
+import vim from 'highlight.js/lib/languages/vim';
+import xml from 'highlight.js/lib/languages/xml';
+import yaml from 'highlight.js/lib/languages/yaml';
+import python from 'highlight.js/lib/languages/python';
+import nginx from 'highlight.js/lib/languages/nginx';
+import kotlin from 'highlight.js/lib/languages/kotlin';
+import gradle from 'highlight.js/lib/languages/gradle';
+
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('clojure', clojure);
+hljs.registerLanguage('java', java);
+hljs.registerLanguage('bash', bash);
+hljs.registerLanguage('dockerfile', dockerfile);
+hljs.registerLanguage('json', json);
+hljs.registerLanguage('markdown', markdown);
+hljs.registerLanguage('properties', properties);
+hljs.registerLanguage('shell', shell);
+hljs.registerLanguage('sql', sql);
+hljs.registerLanguage('vim', vim);
+hljs.registerLanguage('xml', xml);
+hljs.registerLanguage('yaml', yaml);
+hljs.registerLanguage('python', python);
+hljs.registerLanguage('nginx', nginx);
+hljs.registerLanguage('kotlin', kotlin);
+hljs.registerLanguage('gradle', gradle);
+
 export default {
 name:'Portfolio',
     components : {
@@ -345,6 +392,11 @@ name:'Portfolio',
                 role :'guest',
                 subCategoryID:0,
                 fab: false,
+                editorOptions:{
+                  plugins:[colorSyntax,[codeSyntaxHighlight, { hljs }] ],
+                  
+                  
+                },
                 title : '',
                 viewerText:null,
                 isWrite:false,
